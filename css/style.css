@@ -1,0 +1,473 @@
+:root {
+  --bg: #f7f5f1;
+  --surface: #ffffff;
+  --ink: #1a1a1a;
+  --ink-soft: #6b6560;
+  --line: #e7e2da;
+  --accent: #b08d57;
+  --radius: 14px;
+  font-family: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.site-header {
+  padding: 48px 32px 24px;
+  text-align: center;
+}
+
+.site-header__title {
+  margin: 0 0 8px;
+  font-family: Georgia, "Nanum Myeongjo", serif;
+  font-size: clamp(28px, 4vw, 42px);
+  letter-spacing: -0.01em;
+}
+
+.site-header__subtitle {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.filter-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(247, 245, 241, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group__title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.filter-group__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+}
+
+.chip--active {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.toolbar {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+#search-input {
+  flex: 1;
+  max-width: 320px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 14px;
+  background: var(--surface);
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+#result-count {
+  font-size: 13px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.card-grid {
+  max-width: 1200px;
+  margin: 20px auto 64px;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* display:grid/flex 등 명시적 규칙이 [hidden] 기본 규칙을 덮어쓰는 것을 방지 */
+[hidden] {
+  display: none !important;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.18);
+}
+
+.card__thumb {
+  position: relative;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__thumb-label {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.badge--light {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+.badge--dark {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.card__body {
+  padding: 16px 18px 18px;
+}
+
+.card__title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.card__region {
+  font-size: 12px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.card__swatches {
+  display: flex;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card__font {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.card__desc {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #3a3a3a;
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 11.5px;
+  color: var(--accent);
+  background: #f4ede2;
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+.empty-state {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 32px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+#favorites-toggle {
+  white-space: nowrap;
+}
+
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: #b0a898;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, transform 0.1s;
+}
+
+.fav-btn:hover {
+  transform: scale(1.08);
+}
+
+.fav-btn--active {
+  color: #e0a72e;
+}
+
+/* ---------- 상세 보기 (헤더 아래에서 목록 대신 표시되는 영역) ---------- */
+
+.detail-view {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 24px 80px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back-link:hover {
+  color: var(--ink);
+}
+
+.detail-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.detail-hero {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-hero__label {
+  font-family: Georgia, serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.detail-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px 28px 0;
+}
+
+.detail-title {
+  margin: 0;
+  font-family: Georgia, "Nanum Myeongjo", serif;
+  font-size: 28px;
+}
+
+.detail-theme-display {
+  display: flex;
+  gap: 6px;
+}
+
+.theme-pill {
+  font-size: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+
+.theme-pill--active {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.detail-desc {
+  padding: 0 28px;
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #3a3a3a;
+}
+
+.detail-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 28px 0;
+}
+
+.chip--static {
+  cursor: default;
+}
+
+.chip--static:hover {
+  border-color: var(--line);
+}
+
+.detail-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+
+.btn {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn--outline {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.btn--outline:hover {
+  border-color: var(--accent);
+}
+
+.btn--outline:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.detail-section {
+  padding: 0 28px 24px;
+}
+
+.detail-section__title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+}
+
+.detail-section__body {
+  margin: 0;
+  font-size: 14px;
+  color: #3a3a3a;
+}
+
+.detail-palette-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.palette-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.palette-item__swatch {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.palette-item__hex {
+  font-size: 12px;
+  color: var(--ink-soft);
+}

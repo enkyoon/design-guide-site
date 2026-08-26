@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>국내/외 유명 사이트 디자인 가이드</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="site-header__title">국내/외 유명 사이트 디자인 가이드</h1>
+    <p class="site-header__subtitle">테마 · 지역 · 컬러톤 · 폰트 · 분야로 살펴보는 레퍼런스 아카이브</p>
+  </header>
+
+  <nav class="filter-bar" id="filter-bar"></nav>
+
+  <div class="toolbar" id="toolbar">
+    <input type="text" id="search-input" placeholder="사이트명, 키워드로 검색" />
+    <button type="button" id="favorites-toggle" class="chip">★ 즐겨찾기만</button>
+    <span id="result-count"></span>
+  </div>
+
+  <main class="card-grid" id="card-grid"></main>
+  <p class="empty-state" id="empty-state" hidden>조건에 맞는 사이트가 없습니다.</p>
+
+  <section class="detail-view" id="detail-view" hidden>
+    <a class="back-link" id="detail-back" href="#">← 목록</a>
+    <div id="detail-content"></div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/data-source.js"></script>
+  <script src="js/favorites.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
