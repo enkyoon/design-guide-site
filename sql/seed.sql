@@ -221,6 +221,8 @@ from jsonb_populate_recordset(null::public.brands, $seed$
     "theme": "light",
     "color_tone": "grayish",
     "description": "흑백 대비와 다이내믹한 이미지 크롭으로 스포츠의 에너지를 표현",
+    "preview_image": "assets/previews/nike.jpg",
+    "preview_captured_on": "2026-10-15",
     "analysis": "흑백 바탕 위에 화면을 꽉 채운 캠페인 사진과 아주 굵은 대문자 헤드라인을 올려, 색 대신 사진과 글자의 힘으로 에너지를 만든다. 쇼핑 영역은 반대로 담백한 그리드로 정리해 캠페인과 상품 탐색의 온도를 나눈다.",
     "design_keywords": [
       "bold",

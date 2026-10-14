@@ -694,7 +694,7 @@ function showListView() {
   detailViewEl.hidden = true;
   syncFavoritesButton();
   renderCards();
-  if (fromOther) window.scrollTo({ top: listScrollY });
+  if (fromOther) window.scrollTo({ top: listScrollY, behavior: "instant" });
   previousView = "list";
 }
 
@@ -712,7 +712,7 @@ function showDetailView(site, slug) {
     setMeta(`브랜드를 찾을 수 없음 | ${SITE_INFO.name}`);
     renderNotFound(detailContentEl, "brand", slug);
   }
-  window.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0, behavior: "instant" }); // 새 화면은 애니메이션 없이 바로 맨 위에서
   $("main").focus({ preventScroll: true });
   previousView = "detail";
 }
@@ -725,7 +725,7 @@ function showNotFoundView() {
   renderBreadcrumb(null);
   setMeta(`페이지를 찾을 수 없음 | ${SITE_INFO.name}`);
   renderNotFound(detailContentEl, "page");
-  window.scrollTo({ top: 0 });
+  window.scrollTo({ top: 0, behavior: "instant" }); // 새 화면은 애니메이션 없이 바로 맨 위에서
   previousView = "notfound";
 }
 
@@ -814,6 +814,30 @@ function showDetailLoading() {
   detailContentEl.innerHTML = '<p class="dp-loading" role="status">브랜드 정보를 불러오는 중…</p>';
 }
 
+// 상단 요약: 레퍼런스 수 · 상세 분석 수 · 스타일 수 · 업종 수
+function renderHeroStats() {
+  const el = $("hero-stats");
+  const distinct = (key) => new Set(allSites.flatMap((s) => s._facets[key])).size;
+  const items = [
+    ["레퍼런스", allSites.length],
+    ["상세 분석", allSites.filter((s) => s._depth >= 5).length],
+    ["스타일", distinct("style")],
+    ["업종", distinct("industry")]
+  ];
+  el.innerHTML = "";
+  items.forEach(([label, n]) => {
+    const wrap = document.createElement("div");
+    wrap.className = "hero__stat";
+    const dd = document.createElement("dd");
+    dd.textContent = n;
+    const dt = document.createElement("dt");
+    dt.textContent = label;
+    wrap.append(dd, dt);
+    el.appendChild(wrap);
+  });
+  el.hidden = false;
+}
+
 async function loadData() {
   setLoadState("loading");
   if (parseRoute().view === "detail") showDetailLoading();
@@ -835,6 +859,7 @@ async function loadData() {
   }
   setLoadState("ready");
   dataModeEl.hidden = DATA_MODE !== "sample";
+  renderHeroStats();
   renderFilterPanel();
   route();
 }

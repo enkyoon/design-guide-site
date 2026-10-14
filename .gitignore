@@ -1,0 +1,4 @@
+# 사용자가 직접 찍은 원본 캡처 (줄인 이미지는 site/assets/previews/에 저장)
+captures/
+/*.png
+/*.jpg

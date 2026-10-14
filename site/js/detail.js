@@ -442,10 +442,15 @@ function overview(site) {
   const titleRow = h("div", "dp-title-row");
   titleRow.append(h("h1", "dp-title", site.name), h("span", `dp-theme-badge is-${site.theme}`, `${THEME_LABEL[site.theme]} 테마`));
 
-  const keywords = chipList(
-    [...site.moods.map((m) => labelOf(MOOD_LABEL, m)), ...site.keywords.slice(0, 3)],
-    "strong"
-  );
+  // 스타일은 진하게, 자유 키워드는 옅게 (한 줄에 함께)
+  let keywords = null;
+  const moodLabels = site.moods.map((m) => labelOf(MOOD_LABEL, m));
+  const kwLabels = site.keywords.slice(0, 3);
+  if (moodLabels.length || kwLabels.length) {
+    keywords = h("div", "dp-chips");
+    moodLabels.forEach((l) => keywords.appendChild(h("span", "dp-chip dp-chip--strong", l)));
+    kwLabels.forEach((l) => keywords.appendChild(h("span", "dp-chip", l)));
+  }
 
   const actions = h("div", "dp-actions");
   actions.appendChild(externalLink(site.url, "공식 사이트 보기", "btn btn--primary"));
@@ -529,7 +534,9 @@ function sectionNav(items) {
           const btn = buttons[entry.target.id];
           if (btn) {
             btn.setAttribute("aria-current", "true");
-            btn.scrollIntoView({ block: "nearest", inline: "nearest" });
+            // 메뉴 안에서만 가로로 맞춘다 (scrollIntoView는 페이지 전체를 움직일 수 있어 쓰지 않음)
+            const left = btn.offsetLeft - nav.clientWidth / 2 + btn.offsetWidth / 2;
+            nav.scrollTo({ left: Math.max(0, left), behavior: "smooth" });
           }
         });
       },
