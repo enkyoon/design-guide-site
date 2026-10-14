@@ -26,6 +26,12 @@ function normalizeRow(row) {
   };
 }
 
+// 기본 데이터에 js/data.js의 SITE_DETAILS(상세 디자인 정보)를 id로 덧붙인다. DB 구조는 그대로 둔다.
+function withDetails(site) {
+  const detail = (typeof SITE_DETAILS === "object" && SITE_DETAILS[site.id]) || {};
+  return normalizeSite({ ...detail, ...site });
+}
+
 let cachedSites = null;
 
 async function loadSites() {
@@ -35,7 +41,7 @@ async function loadSites() {
     try {
       const { data, error } = await supabaseClient.from("sites").select("*").order("name");
       if (!error && data && data.length > 0) {
-        cachedSites = data.map(normalizeRow);
+        cachedSites = data.map(normalizeRow).map(withDetails);
         return cachedSites;
       }
       if (error) console.warn("Supabase 조회 실패, 로컬 데이터로 대체합니다.", error.message);
@@ -44,7 +50,7 @@ async function loadSites() {
     }
   }
 
-  cachedSites = SITES;
+  cachedSites = SITES.map(withDetails);
   return cachedSites;
 }
 

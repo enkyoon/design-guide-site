@@ -1,65 +1,76 @@
-// 필터 옵션 정의 (label = 화면 표시용, value = 데이터 매칭용)
+// 라벨 사전(REGION_LABEL 등), 업종 그룹, SITE_INFO는 js/schema.js에 있다.
+
+// ---------- 필터 정의 ----------
+// key = URL·상태에 쓰는 이름, param = URL 쿼리 이름, more = "상세 필터" 안에 접어 둘 그룹
+// 그룹 안에서는 OR(하나라도 해당), 그룹끼리는 AND(모두 해당)
+const toOptions = (labels) => Object.entries(labels).map(([value, label]) => ({ value, label }));
+
 const FILTER_GROUPS = [
   {
-    key: "theme",
-    label: "테마",
-    options: [
-      { value: "light", label: "라이트" },
-      { value: "dark", label: "다크" }
-    ]
+    key: "industry",
+    label: "업종",
+    param: "industry",
+    options: Object.entries(INDUSTRY_GROUPS).map(([value, g]) => ({ value, label: g.label })),
+    valuesOf: (site) => [industryGroupOf(site)]
   },
-  {
-    key: "region",
-    label: "지역",
-    options: [
-      { value: "kr", label: "한국" },
-      { value: "asia", label: "아시아" },
-      { value: "europe", label: "유럽" },
-      { value: "us", label: "미국" }
-    ]
-  },
+  { key: "style", label: "스타일", param: "style", options: toOptions(MOOD_LABEL), valuesOf: (site) => site.moods },
+  { key: "theme", label: "테마", param: "theme", options: toOptions(THEME_LABEL), valuesOf: (site) => [site.theme] },
+  { key: "region", label: "지역", param: "region", options: toOptions(REGION_LABEL), valuesOf: (site) => [site.region] },
   {
     key: "colorTone",
     label: "컬러톤",
-    options: [
-      { value: "warm", label: "웜톤" },
-      { value: "cool", label: "쿨톤" },
-      { value: "grayish", label: "그레이시" },
-      { value: "multi", label: "멀티" }
-    ]
+    param: "tone",
+    more: true,
+    options: toOptions(COLOR_TONE_LABEL),
+    valuesOf: (site) => [site.colorTone]
   },
   {
     key: "font",
     label: "폰트",
-    options: [
-      { value: "serif", label: "세리프" },
-      { value: "sans", label: "산세리프" },
-      { value: "display", label: "디스플레이" },
-      { value: "custom", label: "커스텀" }
-    ]
+    param: "font",
+    more: true,
+    options: toOptions(FONT_CATEGORY_LABEL),
+    valuesOf: (site) => [site.font.category]
   }
 ];
+const GROUP_BY_KEY = Object.fromEntries(FILTER_GROUPS.map((g) => [g.key, g]));
 
-const FONT_CATEGORY_LABEL = { serif: "세리프", sans: "산세리프", display: "디스플레이", custom: "커스텀" };
-const THEME_LABEL = { light: "라이트", dark: "다크" };
-const REGION_LABEL = { kr: "한국", asia: "아시아", europe: "유럽", us: "미국" };
-const COLOR_TONE_LABEL = { warm: "웜톤", cool: "쿨톤", grayish: "그레이시", multi: "멀티" };
+// ---------- 정렬 정의 (새 정렬은 여기에 한 줄 추가) ----------
+// 조회수·등록일 정렬은 데이터가 생기면 추가한다 (예: recent: { label: "최근 추가순", compare: (a, b) => ... }).
+const nameCollator = new Intl.Collator(["en", "ko"], { sensitivity: "base" });
+const SORT_OPTIONS = {
+  recommended: {
+    label: "추천순",
+    // 상세 정보가 정리된 브랜드를 먼저, 그 안에서는 등록 순서
+    compare: (a, b) => b._isDetailed - a._isDetailed || a._order - b._order
+  },
+  "name-asc": { label: "이름순 (A→Z)", compare: (a, b) => nameCollator.compare(a.name, b.name) },
+  "name-desc": { label: "이름순 (Z→A)", compare: (a, b) => nameCollator.compare(b.name, a.name) },
+  region: { label: "지역순", compare: (a, b) => a.region.localeCompare(b.region) || a._order - b._order }
+};
+const DEFAULT_SORT = "recommended";
 
-// key -> Set(선택된 값들). 그룹 내에서는 OR, 그룹 간에는 AND.
-const activeFilters = {};
-FILTER_GROUPS.forEach((g) => (activeFilters[g.key] = new Set()));
-let searchTerm = "";
-let favoritesOnly = false;
-let sortBy = "default";
+// ---------- 상태 ----------
+const state = {
+  query: "",
+  filters: Object.fromEntries(FILTER_GROUPS.map((g) => [g.key, new Set()])),
+  favoritesOnly: false,
+  sort: DEFAULT_SORT
+};
 let allSites = [];
 
 const PAGE_SIZE = 12;
 let visibleCount = PAGE_SIZE;
 
-const filterBarEl = document.getElementById("filter-bar");
+const listViewEl = document.getElementById("list-view");
+const filterPanelEl = document.getElementById("filter-panel");
+const filterGroupsEl = document.getElementById("filter-groups");
+const filterMoreGroupsEl = document.getElementById("filter-more-groups");
 const filterBackdropEl = document.getElementById("filter-backdrop");
-const menuToggleEl = document.getElementById("menu-toggle");
-const toolbarEl = document.getElementById("toolbar");
+const filterOpenEl = document.getElementById("filter-open");
+const filterOpenCountEl = document.getElementById("filter-open-count");
+const filterApplyEl = document.getElementById("filter-apply");
+const activeFiltersEl = document.getElementById("active-filters");
 const cardGridEl = document.getElementById("card-grid");
 const resultCountEl = document.getElementById("result-count");
 const searchInputEl = document.getElementById("search-input");
@@ -73,28 +84,93 @@ const detailContentEl = document.getElementById("detail-content");
 const detailBreadcrumbEl = document.getElementById("detail-breadcrumb");
 const backToTopEl = document.getElementById("back-to-top");
 
-function fieldValue(site, key) {
-  if (key === "font") return site.font.category;
-  return site[key];
+// ---------- 검색·필터용 색인 (불러올 때 한 번만 계산) ----------
+
+function buildSearchText(site) {
+  const group = INDUSTRY_GROUPS[industryGroupOf(site)];
+  const { layout, ui } = site;
+  return [
+    site.name,
+    site.id,
+    site.industry,
+    group && group.label,
+    ...(group ? group.aliases : []),
+    ...site.moods,
+    ...site.keywords,
+    ...site.tags,
+    site.description,
+    site.theme,
+    THEME_LABEL[site.theme],
+    ...(THEME_ALIASES[site.theme] || []),
+    REGION_LABEL[site.region],
+    ...(REGION_ALIASES[site.region] || []),
+    layout.type,
+    LAYOUT_TYPE_LABEL[layout.type],
+    layout.density,
+    WHITESPACE_LABEL[layout.whitespace],
+    ...(ui.imageStyle || []).map((s) => IMAGE_STYLE_LABEL[s])
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
 }
 
-function renderFilterBar() {
-  filterBarEl.innerHTML = "";
+function indexSite(site, i) {
+  const facets = {};
+  FILTER_GROUPS.forEach((g) => (facets[g.key] = g.valuesOf(site)));
+  return {
+    ...site,
+    _order: i,
+    _isDetailed: site.characteristics.length > 0 ? 1 : 0,
+    _facets: facets,
+    _search: buildSearchText(site)
+  };
+}
 
-  const groups = [
-    ...FILTER_GROUPS,
-    {
-      key: "industry",
-      label: "분야",
-      options: Array.from(new Set(allSites.map((s) => s.industry))).map((v) => ({ value: v, label: v }))
-    }
-  ];
-  if (!activeFilters.industry) activeFilters.industry = new Set();
+// ---------- 걸러내기 ----------
 
-  groups.forEach((group) => {
+// skipKey: 해당 그룹은 빼고 검사 (필터 옵션 옆 개수를 셀 때 사용)
+function matches(site, skipKey) {
+  for (const g of FILTER_GROUPS) {
+    if (g.key === skipKey) continue;
+    const selected = state.filters[g.key];
+    if (selected.size === 0) continue;
+    if (!site._facets[g.key].some((v) => selected.has(v))) return false;
+  }
+  if (state.favoritesOnly && !isFavorite(site.id)) return false;
+  if (state.query) {
+    // 여러 단어는 모두 포함해야 함 (예: "minimal 금융")
+    const words = state.query.split(/\s+/);
+    if (!words.every((w) => site._search.includes(w))) return false;
+  }
+  return true;
+}
+
+function activeFilterCount() {
+  return FILTER_GROUPS.reduce((n, g) => n + state.filters[g.key].size, 0);
+}
+
+function hasAnyCondition() {
+  return activeFilterCount() > 0 || state.query !== "" || state.favoritesOnly;
+}
+
+// ---------- 필터 패널 ----------
+
+// [그룹 key][값] → 칩 버튼. 다시 그리지 않고 상태만 바꿔서 포커스가 유지되게 한다.
+const chipRefs = {};
+
+function renderFilterPanel() {
+  filterGroupsEl.innerHTML = "";
+  filterMoreGroupsEl.innerHTML = "";
+
+  FILTER_GROUPS.forEach((group) => {
+    // 데이터에 한 번도 나오지 않는 값(예: 교육 업종)은 보여 주지 않는다
+    const used = new Set(allSites.flatMap((s) => s._facets[group.key]));
+    const options = group.options.filter((o) => used.has(o.value));
+    if (!options.length) return;
+
     const groupEl = document.createElement("div");
     groupEl.className = "filter-group";
-
     const titleEl = document.createElement("span");
     titleEl.className = "filter-group__title";
     titleEl.textContent = group.label;
@@ -102,68 +178,169 @@ function renderFilterBar() {
 
     const chipsEl = document.createElement("div");
     chipsEl.className = "filter-group__chips";
-
-    group.options.forEach((opt) => {
+    chipRefs[group.key] = {};
+    options.forEach((opt) => {
       const chip = document.createElement("button");
       chip.type = "button";
-      chip.className = "chip" + (activeFilters[group.key].has(opt.value) ? " chip--active" : "");
-      chip.textContent = opt.label;
-      chip.dataset.group = group.key;
-      chip.dataset.value = opt.value;
-      chip.addEventListener("click", () => toggleFilter(group.key, opt.value, chip));
+      chip.className = "chip";
+      chip.setAttribute("aria-pressed", "false");
+      const label = document.createElement("span");
+      label.textContent = opt.label;
+      const count = document.createElement("span");
+      count.className = "chip__count";
+      chip.append(label, count);
+      chip.addEventListener("click", () => toggleFilter(group.key, opt.value));
       chipsEl.appendChild(chip);
+      chipRefs[group.key][opt.value] = { chip, count };
     });
-
     groupEl.appendChild(chipsEl);
-    filterBarEl.appendChild(groupEl);
+    (group.more ? filterMoreGroupsEl : filterGroupsEl).appendChild(groupEl);
   });
 }
 
-function toggleFilter(groupKey, value, chipEl) {
-  const set = activeFilters[groupKey];
-  if (set.has(value)) {
-    set.delete(value);
-    chipEl.classList.remove("chip--active");
-  } else {
-    set.add(value);
-    chipEl.classList.add("chip--active");
-  }
-  visibleCount = PAGE_SIZE;
-  renderCards();
+// 각 옵션 옆 숫자 = 지금 조건에서 그 옵션을 고르면 나올 브랜드 수 (같은 그룹 조건은 빼고 계산)
+function updateFilterPanel() {
+  FILTER_GROUPS.forEach((group) => {
+    const refs = chipRefs[group.key];
+    if (!refs) return;
+    const counts = {};
+    allSites.forEach((site) => {
+      if (!matches(site, group.key)) return;
+      site._facets[group.key].forEach((v) => (counts[v] = (counts[v] || 0) + 1));
+    });
+    Object.entries(refs).forEach(([value, { chip, count }]) => {
+      const active = state.filters[group.key].has(value);
+      const n = counts[value] || 0;
+      chip.classList.toggle("chip--active", active);
+      chip.classList.toggle("chip--empty", !active && n === 0);
+      chip.setAttribute("aria-pressed", String(active));
+      count.textContent = n;
+    });
+  });
+
+  const n = activeFilterCount();
+  filterOpenCountEl.hidden = n === 0;
+  filterOpenCountEl.textContent = n;
 }
 
-// 카드에서 industry 태그를 클릭했을 때: 해당 필터 그룹에 값을 추가하고 목록 맨 위로 스크롤
-function quickFilterByIndustry(value) {
-  if (!activeFilters.industry) activeFilters.industry = new Set();
-  activeFilters.industry.add(value);
-  visibleCount = PAGE_SIZE;
-  renderFilterBar();
-  renderCards();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+// 현재 조건을 지울 수 있는 칩으로 보여 준다 (예: 업종: 금융 ✕)
+function renderActiveFilters() {
+  activeFiltersEl.innerHTML = "";
+  const items = [];
+  if (state.query) items.push({ label: `검색: ${state.query}`, remove: () => setQuery("") });
+  FILTER_GROUPS.forEach((group) => {
+    state.filters[group.key].forEach((value) => {
+      const opt = group.options.find((o) => o.value === value);
+      items.push({ label: `${group.label}: ${opt ? opt.label : value}`, remove: () => toggleFilter(group.key, value) });
+    });
+  });
+  if (state.favoritesOnly) items.push({ label: "즐겨찾기만", remove: () => setFavoritesOnly(false) });
+
+  items.forEach(({ label, remove }) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "active-chip";
+    chip.setAttribute("aria-label", `${label} 조건 지우기`);
+    chip.innerHTML = `<span></span><span class="active-chip__x" aria-hidden="true">✕</span>`;
+    chip.firstChild.textContent = label;
+    chip.addEventListener("click", remove);
+    activeFiltersEl.appendChild(chip);
+  });
+
+  if (items.length > 1) {
+    const clear = document.createElement("button");
+    clear.type = "button";
+    clear.className = "clear-all-btn";
+    clear.textContent = "모두 지우기";
+    clear.addEventListener("click", clearAll);
+    activeFiltersEl.appendChild(clear);
+  }
 }
 
-// 카드에서 자유 태그를 클릭했을 때: 검색어로 반영 (전용 필터 그룹이 없는 태그이므로 검색으로 대체)
-function quickFilterByTag(tag) {
-  searchInputEl.value = tag;
-  searchTerm = tag.toLowerCase();
+// ---------- 상태 바꾸기 (모두 update()로 화면과 URL을 함께 갱신) ----------
+
+function update() {
   visibleCount = PAGE_SIZE;
   renderCards();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  writeUrl();
 }
 
-function matchesFilters(site) {
-  for (const key of Object.keys(activeFilters)) {
-    const selected = activeFilters[key];
-    if (selected.size === 0) continue;
-    if (!selected.has(fieldValue(site, key))) return false;
-  }
-  if (favoritesOnly && !isFavorite(site.id)) return false;
-  if (searchTerm) {
-    const haystack = (site.name + " " + site.tags.join(" ") + " " + site.industry).toLowerCase();
-    if (!haystack.includes(searchTerm)) return false;
-  }
-  return true;
+function toggleFilter(key, value) {
+  const set = state.filters[key];
+  if (set.has(value)) set.delete(value);
+  else set.add(value);
+  update();
 }
+
+function addFilter(key, value) {
+  state.filters[key].add(value);
+  update();
+}
+
+function setQuery(q) {
+  state.query = q.trim().toLowerCase();
+  if (searchInputEl.value.trim().toLowerCase() !== state.query) searchInputEl.value = q;
+  update();
+}
+
+function setFavoritesOnly(on) {
+  state.favoritesOnly = on;
+  favoritesToggleEl.classList.toggle("chip--active", on);
+  favoritesToggleEl.setAttribute("aria-pressed", String(on));
+  update();
+}
+
+function clearAll() {
+  FILTER_GROUPS.forEach((g) => state.filters[g.key].clear());
+  state.query = "";
+  searchInputEl.value = "";
+  state.favoritesOnly = false;
+  favoritesToggleEl.classList.remove("chip--active");
+  favoritesToggleEl.setAttribute("aria-pressed", "false");
+  update();
+}
+
+// 카드의 업종·스타일을 눌렀을 때: 그 조건을 필터에 더하고 목록 위로
+function quickFilter(key, value) {
+  addFilter(key, value);
+  listViewEl.scrollIntoView({ behavior: "smooth" });
+}
+
+// ---------- URL 쿼리와 상태 동기화 (?industry=finance&style=minimal,editorial&q=...) ----------
+
+function readUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get("q") || "";
+  state.query = q.trim().toLowerCase();
+  searchInputEl.value = q;
+  FILTER_GROUPS.forEach((g) => {
+    const valid = new Set(g.options.map((o) => o.value));
+    const raw = params.get(g.param);
+    state.filters[g.key] = new Set(raw ? raw.split(",").filter((v) => valid.has(v)) : []);
+  });
+  const sort = params.get("sort");
+  state.sort = SORT_OPTIONS[sort] ? sort : DEFAULT_SORT;
+  sortSelectEl.value = state.sort;
+}
+
+function writeUrl() {
+  const params = new URLSearchParams();
+  if (state.query) params.set("q", state.query);
+  FILTER_GROUPS.forEach((g) => {
+    const set = state.filters[g.key];
+    if (set.size) params.set(g.param, Array.from(set).join(","));
+  });
+  if (state.sort !== DEFAULT_SORT) params.set("sort", state.sort);
+  const search = params.toString();
+  const url = window.location.pathname + (search ? `?${search.replace(/%2C/g, ",")}` : "") + window.location.hash;
+  try {
+    history.replaceState(null, "", url);
+  } catch (e) {
+    /* 일부 환경(file:// 등)에서 막히면 URL 저장만 건너뜀 */
+  }
+}
+
+// ---------- 카드 ----------
 
 function createSwatch(hex) {
   const dot = document.createElement("span");
@@ -201,7 +378,7 @@ function createCard(site) {
     const active = toggleFavorite(site.id);
     favBtn.classList.toggle("fav-btn--active", active);
     favBtn.textContent = active ? "★" : "☆";
-    if (favoritesOnly) renderCards();
+    if (state.favoritesOnly) renderCards();
   });
   thumb.appendChild(favBtn);
 
@@ -210,56 +387,57 @@ function createCard(site) {
   const body = document.createElement("div");
   body.className = "card__body";
 
-  const titleRow = document.createElement("div");
-  titleRow.className = "card__title-row";
+  // 카드 = 요약 정보만: 브랜드명 · 지역/업종 · 대표 색 · 핵심 키워드 · 짧은 설명
   const title = document.createElement("h3");
   title.className = "card__title";
   title.textContent = site.name;
+  body.appendChild(title);
+
+  const meta = document.createElement("p");
+  meta.className = "card__meta";
   const region = document.createElement("span");
-  region.className = "card__region";
-  region.textContent = REGION_LABEL[site.region];
-  titleRow.appendChild(title);
-  titleRow.appendChild(region);
-  body.appendChild(titleRow);
+  region.textContent = REGION_LABEL[site.region] || site.region;
+  const industry = document.createElement("button");
+  industry.type = "button";
+  industry.className = "card__industry";
+  industry.textContent = site.industry;
+  const groupKey = industryGroupOf(site);
+  industry.title = `${INDUSTRY_GROUPS[groupKey].label} 업종만 보기`;
+  industry.addEventListener("click", (e) => {
+    e.stopPropagation();
+    quickFilter("industry", groupKey);
+  });
+  meta.append(region, " · ", industry);
+  body.appendChild(meta);
 
   const swatches = document.createElement("div");
   swatches.className = "card__swatches";
-  site.mainColors.forEach((hex) => swatches.appendChild(createSwatch(hex)));
+  site.palette.slice(0, 5).forEach((c) => swatches.appendChild(createSwatch(c.hex)));
   body.appendChild(swatches);
 
-  const fontLine = document.createElement("p");
-  fontLine.className = "card__font";
-  fontLine.textContent = `${site.font.name} · ${FONT_CATEGORY_LABEL[site.font.category]}`;
-  body.appendChild(fontLine);
+  // 핵심 키워드 2~4개: 무드(누르면 스타일 필터), 무드가 없으면 태그(누르면 검색)
+  const tags = document.createElement("div");
+  tags.className = "card__tags";
+  const keywordItems = site.moods.length
+    ? site.moods.slice(0, 4).map((m) => ({ label: MOOD_LABEL[m] || m, onClick: () => quickFilter("style", m) }))
+    : site.tags.slice(0, 3).map((t) => ({ label: t, onClick: () => setQuery(t) }));
+  keywordItems.forEach(({ label, onClick }) => {
+    const tag = document.createElement("button");
+    tag.type = "button";
+    tag.className = "tag";
+    tag.textContent = label;
+    tag.addEventListener("click", (e) => {
+      e.stopPropagation();
+      onClick();
+    });
+    tags.appendChild(tag);
+  });
+  body.appendChild(tags);
 
   const desc = document.createElement("p");
   desc.className = "card__desc";
   desc.textContent = site.description;
   body.appendChild(desc);
-
-  const tags = document.createElement("div");
-  tags.className = "card__tags";
-  const industryTag = document.createElement("button");
-  industryTag.type = "button";
-  industryTag.className = "tag";
-  industryTag.textContent = `#${site.industry}`;
-  industryTag.addEventListener("click", (e) => {
-    e.stopPropagation();
-    quickFilterByIndustry(site.industry);
-  });
-  tags.appendChild(industryTag);
-  site.tags.forEach((t) => {
-    const tag = document.createElement("button");
-    tag.type = "button";
-    tag.className = "tag";
-    tag.textContent = `#${t}`;
-    tag.addEventListener("click", (e) => {
-      e.stopPropagation();
-      quickFilterByTag(t);
-    });
-    tags.appendChild(tag);
-  });
-  body.appendChild(tags);
 
   card.appendChild(body);
 
@@ -270,15 +448,10 @@ function createCard(site) {
   return card;
 }
 
-function sortSites(list) {
-  const arr = [...list];
-  if (sortBy === "name") arr.sort((a, b) => a.name.localeCompare(b.name));
-  else if (sortBy === "region") arr.sort((a, b) => (a.region || "").localeCompare(b.region || ""));
-  return arr;
-}
+// ---------- 결과 그리기 ----------
 
 function renderCards() {
-  const filtered = sortSites(allSites.filter(matchesFilters));
+  const filtered = allSites.filter((s) => matches(s)).sort(SORT_OPTIONS[state.sort].compare);
   const pageItems = filtered.slice(0, visibleCount);
 
   cardGridEl.innerHTML = "";
@@ -288,20 +461,30 @@ function renderCards() {
     cardGridEl.appendChild(card);
   });
 
-  resultCountEl.textContent = `${filtered.length}개의 사이트`;
+  resultCountEl.textContent = hasAnyCondition()
+    ? `레퍼런스 ${filtered.length}개 (전체 ${allSites.length}개 중)`
+    : `레퍼런스 ${allSites.length}개`;
+  filterApplyEl.textContent = `결과 ${filtered.length}개 보기`;
   emptyStateEl.hidden = filtered.length !== 0;
   loadMoreWrapEl.hidden = filtered.length <= visibleCount;
+
+  updateFilterPanel();
+  renderActiveFilters();
 }
 
+// ---------- 이벤트 ----------
+
 searchInputEl.addEventListener("input", (e) => {
-  searchTerm = e.target.value.trim().toLowerCase();
-  visibleCount = PAGE_SIZE;
-  renderCards();
+  state.query = e.target.value.trim().toLowerCase();
+  update();
 });
 
+Object.entries(SORT_OPTIONS).forEach(([value, { label }]) => {
+  sortSelectEl.appendChild(new Option(label, value));
+});
 sortSelectEl.addEventListener("change", (e) => {
-  sortBy = e.target.value;
-  renderCards();
+  state.sort = e.target.value;
+  update();
 });
 
 loadMoreBtnEl.addEventListener("click", () => {
@@ -309,33 +492,40 @@ loadMoreBtnEl.addEventListener("click", () => {
   renderCards();
 });
 
-favoritesToggleEl.addEventListener("click", () => {
-  favoritesOnly = !favoritesOnly;
-  favoritesToggleEl.classList.toggle("chip--active", favoritesOnly);
-  visibleCount = PAGE_SIZE;
-  renderCards();
-});
+favoritesToggleEl.setAttribute("aria-pressed", "false");
+favoritesToggleEl.addEventListener("click", () => setFavoritesOnly(!state.favoritesOnly));
 
-// ---------- 모바일 필터 드로어 ----------
+document.getElementById("empty-clear").addEventListener("click", clearAll);
+document.getElementById("filter-reset").addEventListener("click", clearAll);
+
+// ---------- 모바일 필터 시트 ----------
+
+const mobileQuery = window.matchMedia("(max-width: 860px)");
 
 function openFilterDrawer() {
-  filterBarEl.hidden = false;
+  filterPanelEl.classList.add("is-open");
   filterBackdropEl.hidden = false;
-  menuToggleEl.setAttribute("aria-expanded", "true");
+  filterOpenEl.setAttribute("aria-expanded", "true");
+  document.body.classList.add("no-scroll");
 }
 
 function closeFilterDrawer() {
-  filterBarEl.hidden = true;
+  filterPanelEl.classList.remove("is-open");
   filterBackdropEl.hidden = true;
-  menuToggleEl.setAttribute("aria-expanded", "false");
+  filterOpenEl.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("no-scroll");
 }
 
-menuToggleEl.addEventListener("click", () => {
-  if (filterBarEl.hidden) openFilterDrawer();
-  else closeFilterDrawer();
-});
-
+filterOpenEl.addEventListener("click", openFilterDrawer);
+document.getElementById("filter-close").addEventListener("click", closeFilterDrawer);
+filterApplyEl.addEventListener("click", closeFilterDrawer);
 filterBackdropEl.addEventListener("click", closeFilterDrawer);
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && filterPanelEl.classList.contains("is-open")) closeFilterDrawer();
+});
+mobileQuery.addEventListener("change", (e) => {
+  if (!e.matches) closeFilterDrawer();
+});
 
 // ---------- 맨 위로 이동 ----------
 
@@ -347,124 +537,16 @@ backToTopEl.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// ---------- 상세 보기 (해시 라우팅: 상단 헤더/필터 구조는 그대로 두고 내용만 전환) ----------
+// ---------- 상세 보기 (해시 라우팅 #/site/id: 헤더는 그대로 두고 목록 대신 상세 내용을 보여 줌) ----------
 
 function getRouteSiteId() {
   const match = window.location.hash.match(/^#\/site\/(.+)$/);
   return match ? decodeURIComponent(match[1]) : null;
 }
 
-function renderMetaChip(label) {
-  const chip = document.createElement("span");
-  chip.className = "chip chip--static";
-  chip.textContent = label;
-  return chip;
-}
+// 상세 화면 내용은 js/detail.js (renderDetailPage, renderDetailNotFound)
 
-function renderDetailContent(site) {
-  detailContentEl.innerHTML = "";
-
-  const hero = document.createElement("div");
-  hero.className = "detail-hero";
-  hero.style.background = `linear-gradient(135deg, ${site.mainColors.join(", ")})`;
-  const heroLabel = document.createElement("span");
-  heroLabel.className = "detail-hero__label";
-  heroLabel.textContent = site.name.slice(0, 2).toUpperCase();
-  hero.appendChild(heroLabel);
-
-  const titleRow = document.createElement("div");
-  titleRow.className = "detail-title-row";
-  const title = document.createElement("h1");
-  title.className = "detail-title";
-  title.textContent = site.name;
-  titleRow.appendChild(title);
-  const themeDisplay = document.createElement("div");
-  themeDisplay.className = "detail-theme-display";
-  themeDisplay.innerHTML = `
-    <span class="theme-pill ${site.theme === "light" ? "theme-pill--active" : ""}">라이트</span>
-    <span class="theme-pill ${site.theme === "dark" ? "theme-pill--active" : ""}">다크</span>
-  `;
-  titleRow.appendChild(themeDisplay);
-
-  const desc = document.createElement("p");
-  desc.className = "detail-desc";
-  desc.textContent = site.description;
-
-  const chipRow = document.createElement("div");
-  chipRow.className = "detail-chip-row";
-  [
-    REGION_LABEL[site.region],
-    COLOR_TONE_LABEL[site.colorTone],
-    FONT_CATEGORY_LABEL[site.font.category],
-    site.industry,
-    ...site.tags
-  ].forEach((label) => chipRow.appendChild(renderMetaChip(label)));
-
-  const actionRow = document.createElement("div");
-  actionRow.className = "detail-action-row";
-
-  const favBtn = document.createElement("button");
-  favBtn.type = "button";
-  favBtn.className = "btn btn--outline";
-  const setFavLabel = () => {
-    favBtn.textContent = isFavorite(site.id) ? "★ 즐겨찾기 해제" : "☆ 즐겨찾기";
-  };
-  setFavLabel();
-  favBtn.addEventListener("click", () => {
-    toggleFavorite(site.id);
-    setFavLabel();
-  });
-  actionRow.appendChild(favBtn);
-
-  const downloadBtn = document.createElement("button");
-  downloadBtn.type = "button";
-  downloadBtn.className = "btn btn--outline";
-  downloadBtn.textContent = "⬇ 스타일가이드 다운로드";
-  downloadBtn.disabled = true;
-  downloadBtn.title = "준비 중입니다";
-  actionRow.appendChild(downloadBtn);
-
-  const visitLink = document.createElement("a");
-  visitLink.className = "btn btn--primary";
-  visitLink.href = site.url;
-  visitLink.target = "_blank";
-  visitLink.rel = "noopener";
-  visitLink.textContent = "사이트 바로가기 ↗";
-  actionRow.appendChild(visitLink);
-
-  const paletteSection = document.createElement("section");
-  paletteSection.className = "detail-section";
-  paletteSection.innerHTML = `<h2 class="detail-section__title">메인 컬러</h2>`;
-  const paletteRow = document.createElement("div");
-  paletteRow.className = "detail-palette-row";
-  site.mainColors.forEach((hex) => {
-    const item = document.createElement("div");
-    item.className = "palette-item";
-    item.innerHTML = `<span class="palette-item__swatch" style="background:${hex}"></span><span class="palette-item__hex">${hex}</span>`;
-    paletteRow.appendChild(item);
-  });
-  paletteSection.appendChild(paletteRow);
-
-  const fontSection = document.createElement("section");
-  fontSection.className = "detail-section";
-  fontSection.innerHTML = `
-    <h2 class="detail-section__title">폰트</h2>
-    <p class="detail-section__body">${site.font.name} · ${FONT_CATEGORY_LABEL[site.font.category]}</p>
-  `;
-
-  const card = document.createElement("div");
-  card.className = "detail-card";
-  card.appendChild(hero);
-  card.appendChild(titleRow);
-  card.appendChild(desc);
-  card.appendChild(chipRow);
-  card.appendChild(actionRow);
-  card.appendChild(paletteSection);
-  card.appendChild(fontSection);
-
-  detailContentEl.appendChild(card);
-}
-
+// site가 없으면(잘못된 주소) 마지막 칸에 "찾을 수 없음"을 표시
 function renderBreadcrumb(site) {
   detailBreadcrumbEl.innerHTML = "";
 
@@ -483,52 +565,68 @@ function renderBreadcrumb(site) {
     return sep;
   };
 
+  const current = document.createElement("span");
+  current.className = "breadcrumb__current";
+  current.textContent = site ? site.name : "찾을 수 없음";
+
+  if (!site) {
+    detailBreadcrumbEl.append(homeLink, makeSep(), current);
+    return;
+  }
   const industry = document.createElement("span");
   industry.className = "breadcrumb__mid";
   industry.textContent = site.industry;
-
-  const current = document.createElement("span");
-  current.className = "breadcrumb__current";
-  current.textContent = site.name;
-
   detailBreadcrumbEl.append(homeLink, makeSep(), industry, makeSep(), current);
 }
 
+// 목록 ↔ 상세 전환. 목록의 검색·필터 상태와 스크롤 위치는 그대로 기억한다.
+let listScrollY = 0;
+
 function showListView() {
-  document.title = "국내/외 유명 사이트 디자인 가이드";
-  filterBarEl.hidden = window.innerWidth <= 860;
-  filterBackdropEl.hidden = true;
-  toolbarEl.hidden = false;
+  const wasDetail = !detailViewEl.hidden;
+  document.title = SITE_INFO.name;
+  listViewEl.hidden = false;
   detailViewEl.hidden = true;
-  cardGridEl.hidden = false;
   renderCards();
+  if (wasDetail) window.scrollTo({ top: listScrollY });
 }
 
-function showDetailView(site) {
+function showDetailView(site, id) {
+  if (!listViewEl.hidden) listScrollY = window.scrollY;
   closeFilterDrawer();
-  filterBarEl.hidden = true;
-  toolbarEl.hidden = true;
-  cardGridEl.hidden = true;
-  emptyStateEl.hidden = true;
-  loadMoreWrapEl.hidden = true;
+  listViewEl.hidden = true;
   detailViewEl.hidden = false;
-  document.title = `${site.name} · 국내/외 유명 사이트 디자인 가이드`;
   renderBreadcrumb(site);
-  renderDetailContent(site);
+  if (site) {
+    document.title = `${site.name} · ${SITE_INFO.name}`;
+    renderDetailPage(detailContentEl, site);
+  } else {
+    document.title = `찾을 수 없음 · ${SITE_INFO.name}`;
+    renderDetailNotFound(detailContentEl, id);
+  }
   window.scrollTo({ top: 0 });
 }
 
 function route() {
   const id = getRouteSiteId();
-  const site = id ? allSites.find((s) => s.id === id) : null;
-  if (site) showDetailView(site);
-  else showListView();
+  if (!id) return showListView();
+  showDetailView(allSites.find((s) => s.id === id) || null, id);
 }
+
+// 상세 섹션 메뉴가 헤더 바로 아래에 붙도록 헤더 높이를 CSS 변수로 알려 준다
+function syncHeaderHeight() {
+  document.documentElement.style.setProperty("--header-h", `${document.getElementById("site-header").offsetHeight}px`);
+}
+window.addEventListener("resize", syncHeaderHeight);
 
 window.addEventListener("hashchange", route);
 
 (async function init() {
-  allSites = await loadSites();
-  renderFilterBar();
+  document.getElementById("site-title").textContent = SITE_INFO.name;
+  document.getElementById("site-tagline").textContent = SITE_INFO.tagline;
+  syncHeaderHeight();
+  allSites = (await loadSites()).map(indexSite);
+  readUrl();
+  renderFilterPanel();
   route();
 })();
