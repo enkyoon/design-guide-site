@@ -45,9 +45,9 @@
   --fs-xl: 20px; /* 섹션 제목 */
   --fs-2xl: clamp(26px, 3.4vw, 34px); /* 페이지 제목 */
 
-  --font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", sans-serif;
-  --font-serif: Georgia, "Nanum Myeongjo", serif;
-  --font-mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  /* 글꼴은 하나만 쓴다: 영문·숫자·기호는 Pretendard, 한글은 Noto Sans KR (등록은 css/fonts.css)
+     뒤의 이름들은 글꼴을 못 받았을 때의 대체 글꼴 */
+  --font-sans: "Pretendard Latin", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 
   /* 간격 */
   --space-1: 4px;
@@ -296,7 +296,7 @@ main:focus {
   align-items: center;
   gap: var(--space-2);
   min-height: var(--tap);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-xl);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -367,7 +367,7 @@ main:focus {
 
 .hero__title {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-2xl);
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -399,7 +399,7 @@ main:focus {
 }
 
 .site-footer__name {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-md);
   font-weight: 700;
   color: var(--ink);
@@ -735,7 +735,7 @@ main:focus {
 }
 
 .card__thumb-label {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 28px;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.92);
@@ -1087,7 +1087,7 @@ body.no-scroll {
 
 .dp-title {
   margin: 0;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-2xl);
   line-height: 1.15;
 }
@@ -1447,7 +1447,7 @@ body.no-scroll {
 .dp-point__num {
   display: block;
   margin-bottom: 6px;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: var(--fs-base);
   color: var(--accent-ink);
 }
@@ -1500,7 +1500,8 @@ body.no-scroll {
 
 .dp-color__hex {
   padding: 0 var(--space-3);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums; /* 숫자 폭을 같게 해서 HEX 코드가 가지런히 */
   font-size: var(--fs-sm);
   font-weight: 600;
 }
