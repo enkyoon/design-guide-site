@@ -1,0 +1,2396 @@
+[
+  {
+    "slug": "apple",
+    "name": "Apple",
+    "website_url": "https://www.apple.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "technology",
+    "industry_detail": "테크/전자기기",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "절제된 여백과 큼직한 타이포로 제품 자체에 시선을 집중시키는 미니멀 디자인",
+    "analysis": "넓은 여백과 정밀한 타이포, 제품 중심의 시각 위계가 철저하게 통제된 프리미엄 경험을 만든다. 장식을 거의 쓰지 않고 '큰 제품 이미지 + 짧은 헤드라인' 한 쌍을 섹션마다 반복해 리듬을 만든다.",
+    "preview_image": "assets/previews/apple.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "minimal",
+      "luxury"
+    ],
+    "mood": [
+      "차분함",
+      "정제됨",
+      "자신감"
+    ],
+    "tags": [
+      "넓은 여백",
+      "제품 중심",
+      "큰 헤드라인",
+      "섹션 단위 구성"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0071e3",
+          "role": "버튼·링크 강조"
+        }
+      ],
+      "secondary": [
+        {
+          "hex": "#000000",
+          "role": "어두운 섹션 배경"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "기본 배경"
+        },
+        {
+          "hex": "#f5f5f7",
+          "role": "보조 섹션 배경"
+        },
+        {
+          "hex": "#1d1d1f",
+          "role": "본문 텍스트"
+        },
+        {
+          "hex": "#6e6e73",
+          "role": "보조 텍스트"
+        },
+        {
+          "hex": "#d2d2d7",
+          "role": "구분선"
+        }
+      ],
+      "note": "흰색·연회색 배경에 거의 검은 텍스트. 유채색은 버튼과 링크의 파랑뿐이고, 화면의 색은 제품 사진이 맡는다."
+    },
+    "typography": {
+      "family": "SF Pro (Display · Text)",
+      "category": "sans",
+      "heading": "크고 굵게, 한두 줄로 짧게. 자간을 살짝 좁혀 단단한 인상",
+      "body": "중간 크기의 담백한 문장, 보조 설명은 회색으로 한 단계 낮춤",
+      "weights": [
+        "Regular",
+        "Semibold",
+        "Bold"
+      ],
+      "description": "크기 대비가 위계를 만든다. 헤드라인은 아주 크고 본문은 작게 두어, 읽는 순서가 자연스럽게 정해진다.",
+      "sample": {
+        "heading": "Pro. Beyond.",
+        "body": "가볍고 강력하게. 하루 종일 가는 배터리와 함께.",
+        "weight": 700,
+        "tracking": "-0.02em"
+      }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "mixed",
+      "alignment": "center",
+      "whitespace": "generous",
+      "density": "spacious",
+      "grid": "섹션마다 1~2단의 단순한 모듈 그리드",
+      "blocks": [
+        "nav",
+        "hero",
+        "full-image",
+        "grid-2",
+        "text",
+        "footer"
+      ]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "none",
+      "depth": "flat",
+      "button": {
+        "shape": "pill",
+        "style": "filled",
+        "note": "작은 알약형 파란 버튼과 '더 알아보기 >' 텍스트 링크를 짝지어 쓴다."
+      },
+      "card": {
+        "note": "테두리 없이 연회색 배경과 큰 둥근 모서리로 구분한다."
+      },
+      "navigation": {
+        "type": "minimal",
+        "note": "얇은 상단 바에 카테고리만 나열하고, 제품 페이지에서는 보조 내비게이션이 따로 붙는다."
+      }
+    },
+    "visual": {
+      "image_style": [
+        "product",
+        "3d"
+      ],
+      "characteristics": [
+        "깨끗한 단색 배경",
+        "화면을 가득 채우는 큰 제품 크기",
+        "시각적 잡음 최소화",
+        "조명이 통제된 제품 렌더링"
+      ],
+      "icon_style": "얇고 단순한 선 아이콘",
+      "graphics": "장식 그래픽 대신 제품 이미지와 여백이 화면을 채운다"
+    },
+    "design_characteristics": [
+      {
+        "title": "넓은 여백",
+        "text": "콘텐츠 블록 사이를 넉넉히 띄워 고급스러운 리듬을 유지한다."
+      },
+      {
+        "title": "제품이 주인공",
+        "text": "큰 제품 이미지가 위계를 지배하고, 카피는 짧게 받친다."
+      },
+      {
+        "title": "통제된 타이포",
+        "text": "큰 헤드라인과 짧은 본문으로 읽는 순서가 분명하다."
+      },
+      {
+        "title": "장식 최소화",
+        "text": "테두리·그림자·장식 요소를 의도적으로 줄인다."
+      }
+    ],
+    "best_for": [
+      "프리미엄 제품 출시 페이지",
+      "전자기기·하드웨어 소개",
+      "고가 제품 쇼핑몰",
+      "미니멀한 기업 사이트"
+    ],
+    "things_to_avoid": [
+      "넓은 여백은 정보가 많은 서비스에서 비효율적이다.",
+      "극단적으로 단순한 메뉴는 원하는 정보를 찾기 어렵게 만들 수 있다.",
+      "큰 제품 이미지를 쓰려면 고품질 비주얼 자료가 필요하다.",
+      "좋은 이미지 없이 스타일만 따라 하면 사이트가 텅 비어 보인다."
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "Apple 공식 사이트",
+        "url": "https://www.apple.com"
+      },
+      {
+        "type": "guideline",
+        "label": "Apple Human Interface Guidelines",
+        "url": "https://developer.apple.com/design/human-interface-guidelines/",
+        "note": "앱 디자인 가이드. 웹사이트와 일부 원칙을 공유한다."
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "nike",
+    "name": "Nike",
+    "website_url": "https://www.nike.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "fashion",
+    "industry_detail": "스포츠웨어",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "흑백 대비와 다이내믹한 이미지 크롭으로 스포츠의 에너지를 표현",
+    "analysis": "흑백 바탕 위에 화면을 꽉 채운 캠페인 사진과 아주 굵은 대문자 헤드라인을 올려, 색 대신 사진과 글자의 힘으로 에너지를 만든다. 쇼핑 영역은 반대로 담백한 그리드로 정리해 캠페인과 상품 탐색의 온도를 나눈다.",
+    "design_keywords": [
+      "bold",
+      "editorial"
+    ],
+    "mood": [
+      "역동적",
+      "자신감",
+      "직설적"
+    ],
+    "tags": [
+      "흑백 대비",
+      "대형 캠페인 사진",
+      "굵은 대문자 헤드라인"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#111111",
+          "role": "텍스트·버튼 (브랜드 블랙)"
+        }
+      ],
+      "secondary": [
+        {
+          "hex": "#fa5400",
+          "role": "할인·알림 포인트"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "기본 배경"
+        },
+        {
+          "hex": "#f5f5f5",
+          "role": "상품 이미지 배경"
+        },
+        {
+          "hex": "#707072",
+          "role": "보조 텍스트"
+        },
+        {
+          "hex": "#e5e5e5",
+          "role": "구분선"
+        }
+      ],
+      "note": "흑백이 기본이고, 색은 거의 사진에서 나온다. 주황은 할인·알림 같은 작은 포인트에만 쓴다."
+    },
+    "typography": {
+      "family": "Nike Futura (헤드라인) · Helvetica Now (본문)",
+      "category": "custom",
+      "heading": "아주 굵고 폭이 좁은 대문자, 줄 간격을 바짝 붙임",
+      "body": "작고 담백한 산세리프, 상품명·가격은 굵기로만 구분",
+      "weights": [
+        "Medium (본문)",
+        "Extra Bold Condensed (헤드라인)"
+      ],
+      "description": "헤드라인과 본문의 성격 차이가 매우 크다. 헤드라인은 그래픽처럼, 본문은 정보처럼 쓴다.",
+      "sample": {
+        "heading": "Just Do It.",
+        "body": "새로운 시즌 컬렉션을 지금 만나 보세요.",
+        "weight": 900,
+        "upper": true,
+        "condensed": true,
+        "tracking": "-0.01em"
+      }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "mixed",
+      "alignment": "mixed",
+      "whitespace": "balanced",
+      "density": "comfortable",
+      "grid": "캠페인은 전체 폭 1단, 상품 목록은 3~4단 그리드",
+      "blocks": [
+        "nav",
+        "full-image",
+        "text",
+        "row-scroll",
+        "grid-3",
+        "footer"
+      ]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "none",
+      "depth": "flat",
+      "button": {
+        "shape": "pill",
+        "style": "filled",
+        "note": "검정 또는 흰색 알약형 버튼. 사진 위에서는 흰색 버튼을 쓴다."
+      },
+      "card": {
+        "note": "테두리·그림자 없이 연회색 배경의 정사각형 상품 사진과 짧은 텍스트로 구성한다."
+      },
+      "input": {
+        "note": "연회색 배경의 둥근 알약형 검색창."
+      },
+      "navigation": {
+        "type": "mega",
+        "note": "상단 카테고리에 마우스를 올리면 큰 메가 메뉴가 펼쳐진다."
+      }
+    },
+    "visual": {
+      "image_style": [
+        "photography",
+        "product"
+      ],
+      "characteristics": [
+        "운동선수의 움직임을 담은 역동적인 사진",
+        "화면 끝까지 꽉 채운 과감한 크롭",
+        "상품은 연회색 배경의 깔끔한 단독 컷"
+      ],
+      "graphics": "장식 그래픽 대신 큰 글자 자체를 그래픽처럼 쓴다"
+    },
+    "design_characteristics": [
+      {
+        "title": "사진이 메시지",
+        "text": "설명보다 화면을 가득 채운 캠페인 사진이 먼저 말한다."
+      },
+      {
+        "title": "글자가 곧 그래픽",
+        "text": "굵은 대문자 헤드라인을 이미지처럼 크게 배치한다."
+      },
+      {
+        "title": "흑백 + 한 점의 포인트",
+        "text": "색을 아껴서 사진과 주황 포인트가 더 눈에 띈다."
+      },
+      {
+        "title": "캠페인과 쇼핑의 분리",
+        "text": "감성적인 캠페인 영역과 담백한 상품 그리드를 확실히 나눈다."
+      }
+    ],
+    "best_for": [
+      "스포츠·패션 브랜드",
+      "캠페인·이벤트 랜딩 페이지",
+      "메시지가 강한 브랜드 사이트",
+      "이미지 중심 커머스"
+    ],
+    "things_to_avoid": [
+      "사진 퀄리티가 받쳐 주지 않으면 밋밋해진다.",
+      "굵은 영문 대문자 느낌은 한글로 그대로 옮기기 어렵다.",
+      "강한 대비와 큰 글자가 많으면 정보형 서비스에서는 피로감을 준다."
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "Nike 공식 사이트",
+        "url": "https://www.nike.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "airbnb",
+    "name": "Airbnb",
+    "website_url": "https://www.airbnb.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "travel",
+    "industry_detail": "여행/숙박",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "따뜻한 코랄톤과 둥근 일러스트로 신뢰감 있는 여행 경험을 전달",
+    "analysis": "흰 바탕과 둥근 카드, 통일된 사진 비율로 수많은 숙소를 정돈해 보여 준다. 코랄 레드는 로고와 핵심 버튼에만 쓰고, 화면의 색과 감성은 숙소 사진이 채운다.",
+    "preview_image": "assets/previews/airbnb.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "friendly",
+      "minimal"
+    ],
+    "mood": [
+      "따뜻함",
+      "친근함",
+      "신뢰"
+    ],
+    "tags": [
+      "코랄 포인트",
+      "둥근 카드",
+      "사진 중심 목록",
+      "검색창 중심"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#ff385c",
+          "role": "브랜드 코랄 (로고·예약 버튼)"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "기본 배경"
+        },
+        {
+          "hex": "#f7f7f7",
+          "role": "보조 배경"
+        },
+        {
+          "hex": "#222222",
+          "role": "본문 텍스트"
+        },
+        {
+          "hex": "#6a6a6a",
+          "role": "보조 텍스트"
+        },
+        {
+          "hex": "#dddddd",
+          "role": "구분선·테두리"
+        }
+      ],
+      "note": "흰 바탕에 코랄 레드는 로고와 주요 버튼에만. 화면의 색은 숙소 사진이 채운다."
+    },
+    "typography": {
+      "family": "Airbnb Cereal (자체 서체)",
+      "category": "custom",
+      "heading": "중간 크기의 굵은 제목, 크기보다 굵기로 위계를 만듦",
+      "body": "읽기 편한 크기, 짙은 회색과 중간 회색 두 단계",
+      "weights": [
+        "Book",
+        "Medium",
+        "Bold"
+      ],
+      "description": "둥글고 부드러운 글자 형태가 친근한 인상을 만든다. 글자 크기 차이를 크게 두지 않아 화면이 차분하다.",
+      "sample": {
+        "heading": "어디로 떠나시나요?",
+        "body": "전 세계의 독특한 숙소와 체험을 찾아보세요.",
+        "weight": 600
+      }
+    },
+    "layout": {
+      "type": "card",
+      "content_width": "contained",
+      "alignment": "left",
+      "whitespace": "balanced",
+      "density": "comfortable",
+      "grid": "화면 폭에 따라 2~6단으로 늘어나는 카드 그리드",
+      "blocks": [
+        "nav",
+        "search",
+        "grid-4",
+        "grid-4",
+        "footer"
+      ]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "subtle",
+      "depth": "layered",
+      "button": {
+        "shape": "rounded",
+        "style": "filled",
+        "note": "코랄 계열의 둥근 사각 버튼은 예약처럼 가장 중요한 행동에만 쓴다."
+      },
+      "card": {
+        "note": "테두리 없이 둥근 모서리 사진과 아래 텍스트로 구성. 사진이 카드 대부분을 차지한다."
+      },
+      "input": {
+        "note": "그림자가 살짝 있는 알약형 검색 바. 칸을 나눠 장소·날짜·인원을 입력한다."
+      },
+      "navigation": {
+        "type": "minimal",
+        "note": "로고 · 가운데 검색 바 · 오른쪽 메뉴로 이뤄진 단순한 상단 바."
+      }
+    },
+    "visual": {
+      "image_style": [
+        "photography"
+      ],
+      "characteristics": [
+        "숙소 사진이 화면 대부분을 차지",
+        "사진 비율을 통일해 목록을 정돈",
+        "사람과 공간이 함께 나오는 따뜻한 사진"
+      ],
+      "icon_style": "카테고리 메뉴의 작고 단순한 아이콘"
+    },
+    "design_characteristics": [
+      {
+        "title": "사진 중심 카드 그리드",
+        "text": "같은 비율의 사진 카드를 반복해 많은 숙소를 정돈해 보여 준다."
+      },
+      {
+        "title": "검색 바가 주인공",
+        "text": "화면 상단 가운데의 검색 바가 첫 행동을 안내한다."
+      },
+      {
+        "title": "부드러운 둥근 형태",
+        "text": "카드·버튼·검색 바 모두 둥근 모서리로 친근함을 만든다."
+      },
+      {
+        "title": "아껴 쓰는 그림자",
+        "text": "그림자는 검색 바·팝업처럼 떠 있는 요소에만 약하게 쓴다."
+      }
+    ],
+    "best_for": [
+      "예약·숙박·여행 서비스",
+      "사진 목록이 많은 마켓플레이스",
+      "지역 기반 서비스",
+      "친근한 분위기의 커머스"
+    ],
+    "things_to_avoid": [
+      "사진 톤이 제각각이면 카드 그리드가 산만해진다.",
+      "포인트 컬러를 여러 곳에 쓰면 강조 효과가 사라진다.",
+      "사진이 부족한 서비스에서는 카드가 빈약해 보인다."
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "Airbnb 공식 사이트",
+        "url": "https://www.airbnb.com"
+      },
+      {
+        "type": "article",
+        "label": "Airbnb Design",
+        "url": "https://airbnb.design",
+        "note": "Airbnb 디자인 팀의 글 모음"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "spotify",
+    "name": "Spotify",
+    "website_url": "https://www.spotify.com",
+    "region": "europe",
+    "country": "SE",
+    "industry": "entertainment",
+    "industry_detail": "음악",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "짙은 다크 배경 위 시그니처 그린으로 몰입감 있는 음악 경험을 강조",
+    "analysis": "거의 검은 배경 위에서 앨범 아트가 색을 맡고, 시그니처 그린은 '재생'처럼 핵심 행동에만 아껴 쓴다. 홍보 페이지는 반대로 쨍한 색과 굵은 글자를 대담하게 써서 서비스 화면과 다른 에너지를 낸다.",
+    "preview_image": "assets/previews/spotify.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "playful"
+    ],
+    "mood": [
+      "몰입",
+      "생동감",
+      "젊음"
+    ],
+    "tags": [
+      "다크 배경",
+      "시그니처 그린",
+      "앨범 아트 중심",
+      "굵은 타이포"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#1db954",
+          "role": "시그니처 그린 (재생·주요 버튼)"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#121212",
+          "role": "기본 배경"
+        },
+        {
+          "hex": "#181818",
+          "role": "카드 배경"
+        },
+        {
+          "hex": "#282828",
+          "role": "마우스를 올린 카드"
+        },
+        {
+          "hex": "#ffffff",
+          "role": "본문 텍스트"
+        },
+        {
+          "hex": "#b3b3b3",
+          "role": "보조 텍스트"
+        }
+      ],
+      "note": "서비스 화면은 거의 검정 배경에 그린 포인트 하나. 홍보 페이지에서는 쨍한 색 조합을 대담하게 쓴다."
+    },
+    "typography": {
+      "family": "자체 산세리프 (Spotify Mix, 이전 Circular)",
+      "category": "custom",
+      "heading": "굵고 꽉 찬 산세리프, 짧고 리듬감 있는 문구",
+      "body": "작은 크기의 흰색·회색 텍스트, 두 단계 회색으로 위계",
+      "weights": [
+        "Regular",
+        "Bold",
+        "Black"
+      ],
+      "description": "어두운 배경에서도 또렷하게 보이도록 헤드라인을 아주 굵게 쓴다. 본문은 작고 간결하다.",
+      "sample": {
+        "heading": "지금 듣고 싶은 모든 음악",
+        "body": "나만을 위한 플레이리스트와 새로운 음악을 만나 보세요.",
+        "weight": 800,
+        "tracking": "-0.02em"
+      }
+    },
+    "layout": {
+      "type": "card",
+      "content_width": "full",
+      "alignment": "left",
+      "whitespace": "balanced",
+      "density": "comfortable",
+      "grid": "왼쪽 사이드바 + 가로로 넘기는 카드 줄 여러 개",
+      "blocks": [
+        "nav",
+        "hero",
+        "row-scroll",
+        "row-scroll",
+        "grid-4",
+        "footer"
+      ]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "subtle",
+      "depth": "layered",
+      "button": {
+        "shape": "pill",
+        "style": "filled",
+        "note": "그린 원형 재생 버튼과 알약형 버튼. 보조 버튼은 테두리형을 쓴다."
+      },
+      "card": {
+        "note": "테두리 없이 살짝 밝은 어두운 면 위에 정사각형 커버. 마우스를 올리면 면이 밝아진다."
+      },
+      "input": {
+        "note": "어두운 배경의 둥근 알약형 검색창."
+      },
+      "navigation": {
+        "type": "sidebar",
+        "note": "웹 플레이어는 왼쪽 고정 사이드바와 하단 재생 바로 구성된다."
+      }
+    },
+    "visual": {
+      "image_style": [
+        "photography",
+        "illustration"
+      ],
+      "characteristics": [
+        "앨범·플레이리스트 커버가 화면의 색을 결정",
+        "홍보 페이지는 원색 배경 + 잘라낸 인물 사진 콜라주",
+        "정사각형 커버 이미지의 반복"
+      ],
+      "icon_style": "꽉 찬(Filled) 단순한 아이콘"
+    },
+    "design_characteristics": [
+      {
+        "title": "콘텐츠가 색을 낸다",
+        "text": "배경은 어둡게 비워 두고 앨범 아트가 화면의 색을 채운다."
+      },
+      {
+        "title": "아껴 쓰는 그린",
+        "text": "브랜드 그린은 재생 같은 핵심 행동에만 써서 눈에 잘 띈다."
+      },
+      {
+        "title": "가로 스크롤 진열대",
+        "text": "주제별 카드 줄을 쌓아 많은 콘텐츠를 빠르게 훑게 한다."
+      },
+      {
+        "title": "두 가지 얼굴",
+        "text": "차분한 서비스 화면과 대담한 홍보 화면을 분명히 구분한다."
+      }
+    ],
+    "best_for": [
+      "음악·영상 스트리밍",
+      "콘텐츠 큐레이션 플랫폼",
+      "다크 모드 중심 앱",
+      "젊은 층 대상 서비스"
+    ],
+    "things_to_avoid": [
+      "다크 배경 위 작은 회색 글자는 대비가 낮아지기 쉽다.",
+      "포인트 그린을 넓은 면에 쓰면 눈이 피로하다.",
+      "커버 이미지가 없으면 화면이 단조로운 검은 면이 된다."
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "Spotify 공식 사이트",
+        "url": "https://www.spotify.com"
+      },
+      {
+        "type": "guideline",
+        "label": "Spotify Design Guidelines",
+        "url": "https://developer.spotify.com/documentation/design",
+        "note": "Spotify 콘텐츠·로고를 쓸 때의 가이드"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "netflix",
+    "name": "Netflix",
+    "website_url": "https://www.netflix.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "entertainment",
+    "industry_detail": "미디어/엔터",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "블랙 배경과 강렬한 레드 포인트로 몰입형 스트리밍 무드를 연출",
+    "preview_image": "assets/previews/netflix.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "modern"
+    ],
+    "tags": [
+      "임팩트",
+      "몰입감",
+      "엔터테인먼트"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#141414"
+        },
+        {
+          "hex": "#e50914"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Netflix Sans (custom)",
+      "category": "custom"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.netflix.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "notion",
+    "name": "Notion",
+    "website_url": "https://www.notion.so",
+    "region": "usa",
+    "country": "US",
+    "industry": "technology",
+    "industry_detail": "생산성",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "군더더기 없는 흑백 톤과 명확한 위계로 생산성에 집중한 구성",
+    "preview_image": "assets/previews/notion.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "minimal",
+      "friendly",
+      "editorial"
+    ],
+    "tags": [
+      "흑백 위주",
+      "손그림 일러스트",
+      "문서 같은 구성",
+      "가벼운 UI",
+      "SaaS"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#2383e2",
+          "role": "버튼·링크"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        },
+        {
+          "hex": "#191919",
+          "role": "텍스트"
+        },
+        {
+          "hex": "#f7f6f3",
+          "role": "보조 배경"
+        }
+      ],
+      "note": "흑백에 따뜻한 회색 면을 더하고, 버튼 등 일부에만 파랑을 쓴다."
+    },
+    "typography": {
+      "family": "Inter",
+      "category": "sans",
+      "description": "Inter 계열 산세리프. 헤드라인은 굵고 크게, 본문은 문서처럼 읽기 편한 크기."
+    },
+    "layout": {
+      "type": "minimal",
+      "whitespace": "generous",
+      "density": "comfortable"
+    },
+    "ui_style": {
+      "radius": "slight",
+      "shadow": "subtle",
+      "depth": "flat"
+    },
+    "visual": {
+      "image_style": [
+        "illustration",
+        "product"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "흑백 손그림 캐릭터 일러스트로 친근함을 더한다"
+      },
+      {
+        "title": "제품 화면을 그대로 보여 주는 구성"
+      },
+      {
+        "title": "장식을 줄이고 글과 여백으로 위계를 만든다"
+      }
+    ],
+    "best_for": [
+      "업무·생산성 도구",
+      "문서·지식 서비스",
+      "스타트업 소개 페이지"
+    ],
+    "things_to_avoid": [
+      "일러스트 없이 따라 하면 너무 건조해 보인다",
+      "흑백 위주라 브랜드 개성을 보여 줄 장치가 따로 필요하다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.notion.so"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "linear",
+    "name": "Linear",
+    "website_url": "https://linear.app",
+    "region": "usa",
+    "country": "US",
+    "industry": "technology",
+    "industry_detail": "생산성",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "딥퍼플 그라데이션과 정교한 인터랙션으로 세련된 개발자 경험을 구현",
+    "preview_image": "assets/previews/linear.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "technical",
+      "modern",
+      "minimal"
+    ],
+    "tags": [
+      "다크 UI",
+      "은은한 빛 효과",
+      "얇은 테두리",
+      "정교한 제품 화면",
+      "SaaS"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#5e6ad2",
+          "role": "포인트"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#08090a",
+          "role": "배경"
+        },
+        {
+          "hex": "#f7f8f8",
+          "role": "텍스트"
+        },
+        {
+          "hex": "#8a8f98",
+          "role": "보조 텍스트"
+        }
+      ],
+      "note": "검정에 가까운 배경에서 회색 단계로 위계를 만들고, 보라는 아주 적게 쓴다."
+    },
+    "typography": {
+      "family": "Inter",
+      "category": "sans",
+      "description": "Inter 계열. 큰 헤드라인은 자간을 좁히고, 문장 일부를 흐린 회색으로 처리해 단계감을 준다."
+    },
+    "layout": {
+      "type": "grid",
+      "whitespace": "generous",
+      "density": "comfortable"
+    },
+    "ui_style": {
+      "radius": "slight",
+      "shadow": "subtle",
+      "depth": "layered"
+    },
+    "visual": {
+      "image_style": [
+        "product",
+        "3d"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "1px 얇은 테두리와 은은한 빛으로 깊이를 표현한다"
+      },
+      {
+        "title": "제품 화면 캡처가 핵심 이미지"
+      },
+      {
+        "title": "스크롤에 맞춰 차분하게 나타나는 움직임"
+      }
+    ],
+    "best_for": [
+      "개발자 도구·B2B SaaS",
+      "테크 스타트업",
+      "제품 소개 랜딩 페이지"
+    ],
+    "things_to_avoid": [
+      "어두운 회색 단계가 많아 화면에 따라 구분이 어렵다",
+      "분위기만 따라 하면 흔한 다크 SaaS 느낌이 된다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://linear.app"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "figma",
+    "name": "Figma",
+    "website_url": "https://www.figma.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "technology",
+    "industry_detail": "디자인 툴",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "다채로운 브랜드 컬러와 명료한 그리드로 창의적인 협업 무드를 표현",
+    "preview_image": "assets/previews/figma.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "playful",
+      "friendly",
+      "modern"
+    ],
+    "tags": [
+      "컬러풀",
+      "협업",
+      "그리드",
+      "SaaS"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0acf83"
+        },
+        {
+          "hex": "#a259ff"
+        },
+        {
+          "hex": "#f24e1e"
+        },
+        {
+          "hex": "#1abcfe"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Inter",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.figma.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "stripe",
+    "name": "Stripe",
+    "website_url": "https://stripe.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "finance",
+    "industry_detail": "금융",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "인디고 그라데이션과 정교한 모션으로 신뢰감 있는 개발자 경험을 전달",
+    "preview_image": "assets/previews/stripe.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "technical",
+      "modern",
+      "bold"
+    ],
+    "tags": [
+      "그라데이션 배경",
+      "기울어진 섹션",
+      "코드 예시",
+      "정교한 도식",
+      "SaaS"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#635bff",
+          "role": "포인트"
+        }
+      ],
+      "secondary": [
+        {
+          "hex": "#00d4ff",
+          "role": "그라데이션"
+        },
+        {
+          "hex": "#ff7600",
+          "role": "그라데이션"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        },
+        {
+          "hex": "#0a2540",
+          "role": "텍스트"
+        }
+      ],
+      "note": "흰 배경과 짙은 남색 글자 위에, 보라·하늘·주황이 섞인 그라데이션을 상단에 크게 쓴다."
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans",
+      "description": "얇고 정갈한 산세리프(Söhne 계열). 굵기를 낮춘 큰 헤드라인으로 차분한 신뢰감."
+    },
+    "layout": {
+      "type": "grid",
+      "whitespace": "generous",
+      "density": "comfortable"
+    },
+    "ui_style": {
+      "radius": "slight",
+      "shadow": "subtle",
+      "depth": "layered"
+    },
+    "visual": {
+      "image_style": [
+        "illustration",
+        "product",
+        "3d"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "움직이는 그라데이션이 첫인상을 만든다"
+      },
+      {
+        "title": "복잡한 기능을 도식·코드 조각으로 보여 준다"
+      },
+      {
+        "title": "정보량이 많아도 그리드 정렬로 정돈한다"
+      }
+    ],
+    "best_for": [
+      "핀테크·결제 서비스",
+      "개발자 대상 API 서비스",
+      "신뢰가 중요한 B2B"
+    ],
+    "things_to_avoid": [
+      "그라데이션을 과하게 쓰면 글자가 잘 안 읽힌다",
+      "움직임이 많아 성능 관리가 필요하다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://stripe.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "behance",
+    "name": "Behance",
+    "website_url": "https://www.behance.net",
+    "region": "usa",
+    "country": "US",
+    "industry": "media",
+    "industry_detail": "포트폴리오",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "강렬한 블루 포인트와 카드형 그리드로 작업물을 돋보이게 배치",
+    "preview_image": "assets/previews/behance.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "editorial"
+    ],
+    "tags": [
+      "갤러리",
+      "그리드",
+      "포트폴리오"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0057ff"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#191919"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.behance.net"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "dribbble",
+    "name": "Dribbble",
+    "website_url": "https://dribbble.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "media",
+    "industry_detail": "포트폴리오",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "핑크 포인트 컬러와 밀도 높은 카드 그리드로 생동감 있는 커뮤니티를 표현",
+    "preview_image": "assets/previews/dribbble.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "playful",
+      "friendly"
+    ],
+    "tags": [
+      "생동감",
+      "커뮤니티",
+      "카드형"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#ea4c89"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#333333"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://dribbble.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "awwwards",
+    "name": "Awwwards",
+    "website_url": "https://www.awwwards.com",
+    "region": "europe",
+    "country": "ES",
+    "industry": "media",
+    "industry_detail": "디자인 어워드",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "다크 배경과 옐로우 포인트로 실험적이고 도전적인 웹디자인을 큐레이션",
+    "preview_image": "assets/previews/awwwards.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "editorial"
+    ],
+    "tags": [
+      "실험적",
+      "큐레이션",
+      "포인트컬러"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0d0d0d"
+        },
+        {
+          "hex": "#ffd200"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.awwwards.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "naver",
+    "name": "네이버",
+    "website_url": "https://www.naver.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "technology",
+    "industry_detail": "포털",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "시그니처 그린과 정보 밀도 높은 레이아웃으로 실용적인 포털 경험을 제공",
+    "preview_image": "assets/previews/naver.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "modern",
+      "friendly"
+    ],
+    "tags": [
+      "정보형",
+      "실용성",
+      "포털"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#03c75a"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#191919"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Pretendard",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.naver.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "kakao",
+    "name": "카카오",
+    "website_url": "https://www.kakaocorp.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "technology",
+    "industry_detail": "메신저/SNS",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "카카오 옐로우와 둥근 캐릭터 그래픽으로 친근한 브랜드 경험을 연출",
+    "preview_image": "assets/previews/kakao.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "friendly",
+      "playful"
+    ],
+    "tags": [
+      "캐릭터",
+      "브랜드"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#fee500"
+        },
+        {
+          "hex": "#391b1b"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Pretendard",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.kakaocorp.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "toss",
+    "name": "토스",
+    "website_url": "https://toss.im",
+    "region": "korea",
+    "country": "KR",
+    "industry": "finance",
+    "industry_detail": "금융",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "선명한 블루톤과 큼직한 타이포로 직관적인 금융 경험을 설계",
+    "analysis": "한 화면에 큰 문장 하나만 두고 나머지를 비워, 금융처럼 어려운 내용을 대화하듯 쉽게 읽히게 만든다. 촘촘하게 나눈 회색 단계와 단 하나의 파란 강조색이 위계를 담당한다.",
+    "preview_image": "assets/previews/toss.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "minimal",
+      "friendly"
+    ],
+    "mood": [
+      "쉬움",
+      "신뢰",
+      "가벼움"
+    ],
+    "tags": [
+      "토스 블루",
+      "큰 문장",
+      "넉넉한 여백",
+      "3D 아이콘"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#3182f6",
+          "role": "토스 블루 (버튼·강조)"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "기본 배경"
+        },
+        {
+          "hex": "#f2f4f6",
+          "role": "보조 배경·카드 면"
+        },
+        {
+          "hex": "#191f28",
+          "role": "제목 텍스트"
+        },
+        {
+          "hex": "#4e5968",
+          "role": "본문 텍스트"
+        },
+        {
+          "hex": "#8b95a1",
+          "role": "보조 텍스트"
+        },
+        {
+          "hex": "#e5e8eb",
+          "role": "구분선"
+        }
+      ],
+      "note": "흰 바탕과 연회색 면, 파랑은 버튼과 강조에만. 회색을 촘촘한 단계로 나눠 위계를 만든다."
+    },
+    "typography": {
+      "family": "Toss Product Sans (자체 서체)",
+      "category": "custom",
+      "heading": "크고 굵은 한두 줄 문장, 말하듯 쉬운 표현",
+      "body": "넉넉한 줄 간격, 회색 농도로 중요도를 나눔",
+      "weights": [
+        "Regular",
+        "Semibold",
+        "Bold"
+      ],
+      "description": "문장 자체가 디자인이다. 설명문 대신 사용자에게 말을 거는 짧은 문장을 크게 보여 준다.",
+      "sample": {
+        "heading": "송금, 이제 쉽고 간편하게",
+        "body": "계좌번호를 몰라도 연락처만 있으면 바로 보낼 수 있어요.",
+        "weight": 700,
+        "tracking": "-0.02em"
+      }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "mixed",
+      "alignment": "mixed",
+      "whitespace": "generous",
+      "density": "spacious",
+      "grid": "문장과 앱 화면 이미지가 좌우로 번갈아 나오는 2단 구성",
+      "blocks": [
+        "nav",
+        "hero",
+        "split",
+        "split",
+        "text",
+        "footer"
+      ]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "none",
+      "depth": "flat",
+      "button": {
+        "shape": "rounded",
+        "style": "filled",
+        "note": "모서리가 둥근 큰 파란 버튼. 모바일에서는 화면 폭을 꽉 채우는 경우가 많다."
+      },
+      "card": {
+        "note": "테두리 없이 연회색 면과 둥근 모서리로 내용을 묶는다."
+      },
+      "navigation": {
+        "type": "minimal",
+        "note": "로고와 몇 개의 메뉴만 있는 단순한 상단 바."
+      }
+    },
+    "visual": {
+      "image_style": [
+        "3d",
+        "illustration",
+        "product"
+      ],
+      "characteristics": [
+        "입체감 있는 3D 아이콘과 오브젝트",
+        "앱 화면을 휴대폰 틀에 담아 보여 줌",
+        "배경은 비워 두고 오브젝트만 강조"
+      ],
+      "icon_style": "둥글고 입체적인 이모지형 아이콘 (토스페이스)"
+    },
+    "design_characteristics": [
+      {
+        "title": "한 화면, 한 메시지",
+        "text": "한 번에 하나의 문장과 하나의 이미지만 보여 준다."
+      },
+      {
+        "title": "대화하는 문장",
+        "text": "설명문 대신 사용자에게 말을 거는 짧은 문장을 쓴다."
+      },
+      {
+        "title": "회색 단계로 만든 위계",
+        "text": "색을 늘리지 않고 회색 농도로 제목·본문·보조 정보를 나눈다."
+      },
+      {
+        "title": "부드러운 3D 그래픽",
+        "text": "딱딱한 금융 주제를 입체 아이콘으로 친근하게 바꾼다."
+      }
+    ],
+    "best_for": [
+      "금융·핀테크 서비스",
+      "모바일 앱 소개 페이지",
+      "복잡한 절차를 쉽게 설명해야 하는 서비스",
+      "스타트업 서비스 랜딩"
+    ],
+    "things_to_avoid": [
+      "문장이 길어지면 큰 글자 구성이 무너진다.",
+      "3D 그래픽은 스타일을 통일해 제작해야 해서 비용이 든다.",
+      "정보를 한 화면에 하나씩 나누면 비교·탐색이 많은 서비스에서는 스크롤이 길어진다."
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "토스 공식 사이트",
+        "url": "https://toss.im"
+      },
+      {
+        "type": "article",
+        "label": "토스 기술 블로그",
+        "url": "https://toss.tech",
+        "note": "디자인·개발 과정을 소개하는 글 모음"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "coupang",
+    "name": "쿠팡",
+    "website_url": "https://www.coupang.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "commerce",
+    "industry_detail": "온라인 쇼핑",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "로켓배송을 상징하는 블루 포인트와 밀도 높은 정보구조로 빠른 쇼핑을 지원",
+    "preview_image": "assets/previews/coupang.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "friendly"
+    ],
+    "tags": [
+      "정보형",
+      "빠른탐색",
+      "쇼핑"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0073e6"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#333333"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Pretendard",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.coupang.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "musinsa",
+    "name": "무신사",
+    "website_url": "https://www.musinsa.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "fashion",
+    "industry_detail": "패션 플랫폼",
+    "theme": "dark",
+    "color_tone": "grayish",
+    "description": "블랙앤화이트 기반의 스트리트 무드로 트렌디한 패션 감성을 연출",
+    "preview_image": "assets/previews/musinsa.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "minimal",
+      "bold",
+      "modern"
+    ],
+    "tags": [
+      "블랙앤화이트",
+      "촘촘한 상품 그리드",
+      "매거진식 기획전",
+      "작은 글씨"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#000000",
+          "role": "텍스트·버튼"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        },
+        {
+          "hex": "#f1f1f1",
+          "role": "보조 배경"
+        },
+        {
+          "hex": "#a0a0a0",
+          "role": "보조 텍스트"
+        }
+      ],
+      "note": "색을 거의 쓰지 않는 흑백 구성. 상품 사진이 유일한 색이다."
+    },
+    "typography": {
+      "family": "Pretendard",
+      "category": "sans",
+      "description": "작고 단단한 고딕. 상품명·가격 정보를 촘촘하게 배치한다."
+    },
+    "layout": {
+      "type": "grid",
+      "whitespace": "tight",
+      "density": "compact"
+    },
+    "ui_style": {
+      "radius": "sharp",
+      "shadow": "none",
+      "depth": "flat"
+    },
+    "visual": {
+      "image_style": [
+        "photography",
+        "product"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "색을 줄여 상품 사진을 돋보이게 한다"
+      },
+      {
+        "title": "한 화면에 많은 상품을 보여 주는 촘촘한 그리드"
+      },
+      {
+        "title": "각진 버튼과 이미지로 날카로운 인상"
+      }
+    ],
+    "best_for": [
+      "패션·편집숍",
+      "상품 수가 많은 쇼핑몰",
+      "스트리트·트렌드 브랜드"
+    ],
+    "things_to_avoid": [
+      "글씨가 작고 촘촘해 모바일에서 읽기 어려울 수 있다",
+      "흑백만 쓰면 다른 브랜드와 구분이 약해진다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.musinsa.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "baemin",
+    "name": "배달의민족",
+    "website_url": "https://www.baemin.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "food",
+    "industry_detail": "음식 배달",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "민트톤과 위트있는 한나체 타이포로 유쾌한 브랜드 개성을 표현",
+    "preview_image": "assets/previews/baemin.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "playful",
+      "friendly",
+      "bold"
+    ],
+    "tags": [
+      "민트 컬러",
+      "자체 제작 서체",
+      "말장난 카피",
+      "일러스트"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#2ac1bc",
+          "role": "브랜드 컬러"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        },
+        {
+          "hex": "#333333",
+          "role": "텍스트"
+        },
+        {
+          "hex": "#f5f5f5",
+          "role": "보조 배경"
+        }
+      ],
+      "note": "민트 하나를 브랜드 색으로 강하게 쓰고, 나머지는 흰색·검정으로 단순하게 둔다."
+    },
+    "typography": {
+      "family": "한나체 (custom)",
+      "category": "display",
+      "description": "한나체·주아체·도현체 등 자체 제작 서체. 글자 자체가 브랜드 개성을 드러낸다."
+    },
+    "layout": {
+      "type": "card",
+      "whitespace": "balanced",
+      "density": "comfortable"
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "subtle",
+      "depth": "flat"
+    },
+    "visual": {
+      "image_style": [
+        "illustration",
+        "photography"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "B급 감성의 말장난 카피가 디자인의 일부"
+      },
+      {
+        "title": "서체가 곧 브랜드 자산"
+      },
+      {
+        "title": "음식 사진과 일러스트를 함께 쓴다"
+      }
+    ],
+    "best_for": [
+      "음식·생활 서비스",
+      "친근한 커뮤니티",
+      "유머가 어울리는 브랜드"
+    ],
+    "things_to_avoid": [
+      "재치 있는 카피 없이 서체만 가져오면 어색하다",
+      "신뢰가 중요한 금융·의료 분야에는 어울리지 않는다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.baemin.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "line",
+    "name": "LINE",
+    "website_url": "https://line.me",
+    "region": "japan",
+    "country": "JP",
+    "industry": "technology",
+    "industry_detail": "메신저/SNS",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "라인 그린과 캐릭터 일러스트로 친근한 커뮤니케이션 경험을 제공",
+    "preview_image": "assets/previews/line.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "friendly",
+      "playful"
+    ],
+    "tags": [
+      "캐릭터",
+      "커뮤니케이션"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#06c755"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#000000"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://line.me"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "muji",
+    "name": "MUJI",
+    "website_url": "https://www.muji.com",
+    "region": "japan",
+    "country": "JP",
+    "industry": "commerce",
+    "industry_detail": "리빙/라이프스타일",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "무채색과 넉넉한 여백을 활용한 절제된 미니멀리즘으로 브랜드 철학을 전달",
+    "preview_image": "assets/previews/muji.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "minimal",
+      "editorial"
+    ],
+    "tags": [
+      "무채색",
+      "생활 장면 사진",
+      "넉넉한 여백",
+      "담백한 문장"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#7f0019",
+          "role": "로고·포인트"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        },
+        {
+          "hex": "#f7f5f0",
+          "role": "보조 배경"
+        },
+        {
+          "hex": "#3c3c3c",
+          "role": "텍스트"
+        }
+      ],
+      "note": "흰색·베이지 배경에 무채색 글자. 로고의 짙은 붉은색만 포인트로 쓴다."
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans",
+      "description": "장식 없는 고딕. 크기 차이를 크게 두지 않아 차분하다."
+    },
+    "layout": {
+      "type": "grid",
+      "whitespace": "generous",
+      "density": "comfortable"
+    },
+    "ui_style": {
+      "radius": "sharp",
+      "shadow": "none",
+      "depth": "flat"
+    },
+    "visual": {
+      "image_style": [
+        "lifestyle",
+        "product"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "생활 장면 사진으로 제품을 자연스럽게 보여 준다"
+      },
+      {
+        "title": "강조를 최소화해 차분한 톤을 유지한다"
+      },
+      {
+        "title": "정사각형 상품 그리드"
+      }
+    ],
+    "best_for": [
+      "리빙·생활용품",
+      "친환경·자연주의 브랜드",
+      "카페·라이프스타일 공간"
+    ],
+    "things_to_avoid": [
+      "사진 톤 관리가 안 되면 밋밋해 보인다",
+      "구매 버튼 같은 행동 유도가 약해질 수 있다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.muji.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "uniqlo",
+    "name": "유니클로",
+    "website_url": "https://www.uniqlo.com",
+    "region": "japan",
+    "country": "JP",
+    "industry": "fashion",
+    "industry_detail": "패션 (SPA)",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "강렬한 레드 로고와 그리드형 상품 나열로 실용적인 쇼핑 경험을 구성",
+    "design_keywords": [
+      "minimal",
+      "bold"
+    ],
+    "tags": [
+      "그리드",
+      "실용성",
+      "쇼핑"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#ff0000"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#111111"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.uniqlo.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "sony",
+    "name": "Sony",
+    "website_url": "https://www.sony.com",
+    "region": "japan",
+    "country": "JP",
+    "industry": "technology",
+    "industry_detail": "테크/전자기기",
+    "theme": "dark",
+    "color_tone": "grayish",
+    "description": "블랙 기반의 하이테크 무드와 절제된 타이포로 프리미엄 감성을 강조",
+    "preview_image": "assets/previews/sony.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "minimal",
+      "technical"
+    ],
+    "tags": [
+      "하이테크",
+      "프리미엄",
+      "절제미"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#000000"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#8c8c8c"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.sony.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "nintendo",
+    "name": "Nintendo",
+    "website_url": "https://www.nintendo.com",
+    "region": "japan",
+    "country": "JP",
+    "industry": "entertainment",
+    "industry_detail": "게임",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "경쾌한 레드 포인트와 둥근 그래픽으로 즐거운 게임 경험을 전달",
+    "preview_image": "assets/previews/nintendo.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "playful",
+      "friendly",
+      "bold"
+    ],
+    "tags": [
+      "그래픽",
+      "게임"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#e60012"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#1a1a1a"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Nintendo Display (custom)",
+      "category": "display"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.nintendo.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "ikea",
+    "name": "IKEA",
+    "website_url": "https://www.ikea.com",
+    "region": "europe",
+    "country": "SE",
+    "industry": "commerce",
+    "industry_detail": "리빙/라이프스타일",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "블루와 옐로우의 선명한 대비로 친근하고 실용적인 라이프스타일을 제안",
+    "preview_image": "assets/previews/ikea.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "friendly",
+      "bold"
+    ],
+    "tags": [
+      "대비",
+      "실용성"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0058a3"
+        },
+        {
+          "hex": "#ffda1a"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Noto Sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.ikea.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "bmw",
+    "name": "BMW",
+    "website_url": "https://www.bmw.com",
+    "region": "europe",
+    "country": "DE",
+    "industry": "mobility",
+    "industry_detail": "자동차",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "딥블루와 메탈릭 그레이 톤으로 정교한 엔지니어링 감성을 표현",
+    "preview_image": "assets/previews/bmw.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "luxury",
+      "technical"
+    ],
+    "tags": [
+      "엔지니어링",
+      "메탈릭",
+      "정교함"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0c0c0c"
+        },
+        {
+          "hex": "#1c69d4"
+        },
+        {
+          "hex": "#c6c6c6"
+        }
+      ]
+    },
+    "typography": {
+      "family": "BMW Type Next (custom)",
+      "category": "custom"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.bmw.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "louisvuitton",
+    "name": "Louis Vuitton",
+    "website_url": "https://www.louisvuitton.com",
+    "region": "europe",
+    "country": "FR",
+    "industry": "fashion",
+    "industry_detail": "명품/뷰티",
+    "theme": "dark",
+    "color_tone": "grayish",
+    "description": "블랙과 골드의 대비, 클래식한 세리프 타이포로 럭셔리한 헤리티지를 강조",
+    "design_keywords": [
+      "luxury",
+      "editorial"
+    ],
+    "tags": [
+      "헤리티지",
+      "클래식"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#000000"
+        },
+        {
+          "hex": "#c9a86a"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "family": "LV Serif (custom)",
+      "category": "serif"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.louisvuitton.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "chanel",
+    "name": "Chanel",
+    "website_url": "https://www.chanel.com",
+    "region": "europe",
+    "country": "FR",
+    "industry": "fashion",
+    "industry_detail": "명품/뷰티",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "블랙앤화이트의 절제된 대비와 세리프 타이포로 시대를 초월한 우아함을 표현",
+    "design_keywords": [
+      "luxury",
+      "editorial",
+      "minimal"
+    ],
+    "tags": [
+      "블랙앤화이트",
+      "대문자 로고타입",
+      "대형 화보",
+      "넓은 여백"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#000000",
+          "role": "텍스트·버튼"
+        }
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        },
+        {
+          "hex": "#d0d0d0",
+          "role": "구분선"
+        }
+      ],
+      "note": "흑백만으로 구성한다. 색은 화보 사진에서만 나온다."
+    },
+    "typography": {
+      "family": "Chanel Serif (custom)",
+      "category": "serif",
+      "description": "대문자 로고타입과 절제된 세리프·산세리프 조합. 글자 수를 최소화한다."
+    },
+    "layout": {
+      "type": "editorial",
+      "whitespace": "generous",
+      "density": "spacious"
+    },
+    "ui_style": {
+      "radius": "sharp",
+      "shadow": "none",
+      "depth": "flat"
+    },
+    "visual": {
+      "image_style": [
+        "photography"
+      ]
+    },
+    "design_characteristics": [
+      {
+        "title": "화보 사진을 크게 배치한 잡지 같은 구성"
+      },
+      {
+        "title": "버튼도 각진 흑백으로 장식을 최소화한다"
+      },
+      {
+        "title": "설명보다 이미지로 분위기를 전달한다"
+      }
+    ],
+    "best_for": [
+      "명품·뷰티·패션",
+      "갤러리·전시",
+      "프리미엄 호텔·레스토랑"
+    ],
+    "things_to_avoid": [
+      "사진 퀄리티가 핵심이라 촬영 부담이 크다",
+      "정보가 많은 서비스에는 비효율적이다"
+    ],
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.chanel.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "riotgames",
+    "name": "Riot Games",
+    "website_url": "https://www.riotgames.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "entertainment",
+    "industry_detail": "게임",
+    "theme": "dark",
+    "color_tone": "multi",
+    "description": "다크 배경 위 강렬한 그래픽과 커스텀 타이포로 몰입감 있는 게임 세계관을 구현",
+    "preview_image": "assets/previews/riotgames.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "playful"
+    ],
+    "tags": [
+      "몰입감",
+      "세계관",
+      "그래픽"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#0a0e14"
+        },
+        {
+          "hex": "#d13639"
+        },
+        {
+          "hex": "#eb0029"
+        },
+        {
+          "hex": "#005a82"
+        }
+      ]
+    },
+    "typography": {
+      "family": "Riot Display (custom)",
+      "category": "display"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.riotgames.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "steam",
+    "name": "Steam",
+    "website_url": "https://store.steampowered.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "entertainment",
+    "industry_detail": "게임",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "짙은 블루그레이 톤과 밀도 높은 레이아웃으로 방대한 게임 라이브러리를 탐색하게 함",
+    "preview_image": "assets/previews/steam.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "technical",
+      "modern"
+    ],
+    "tags": [
+      "정보형",
+      "밀도",
+      "게임플랫폼"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#1b2838"
+        },
+        {
+          "hex": "#66c0f4"
+        },
+        {
+          "hex": "#ffffff"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://store.steampowered.com"
+      }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "playstation",
+    "name": "PlayStation",
+    "website_url": "https://www.playstation.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "entertainment",
+    "industry_detail": "게임",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "딥블루와 화이트의 강한 대비로 강력한 콘솔 브랜드 이미지를 전달",
+    "preview_image": "assets/previews/playstation.jpg",
+    "preview_captured_on": "2026-10-14",
+    "design_keywords": [
+      "bold",
+      "technical"
+    ],
+    "tags": [
+      "강렬함",
+      "브랜드",
+      "콘솔"
+    ],
+    "colors": {
+      "primary": [
+        {
+          "hex": "#003791"
+        },
+        {
+          "hex": "#ffffff"
+        },
+        {
+          "hex": "#000000"
+        }
+      ]
+    },
+    "typography": {
+      "family": "system sans",
+      "category": "sans"
+    },
+    "sources": [
+      {
+        "type": "official",
+        "label": "공식 사이트",
+        "url": "https://www.playstation.com"
+      }
+    ],
+    "review_status": "draft"
+  }
+]

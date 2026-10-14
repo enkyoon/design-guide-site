@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>페이지를 찾을 수 없음 | Design Reference</title>
+<meta name="robots" content="noindex" />
+<!-- 정적 호스팅(GitHub Pages·Netlify 등)이 없는 주소에서 보여 주는 페이지. 사이트 안의 없는 주소(#/...)는 index.html이 처리한다. -->
+<style>
+  :root { color-scheme: light; --bg: #f7f5f1; --ink: #1a1a1a; --soft: #6b6560; --line: #e7e2da; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box;
+         background: var(--bg); color: var(--ink); text-align: center;
+         font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", sans-serif; }
+  h1 { margin: 0 0 8px; font-size: 20px; }
+  p { margin: 0 0 22px; color: var(--soft); }
+  a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px;
+      background: var(--ink); color: var(--bg); font-weight: 600; text-decoration: none; }
+  a:focus-visible { outline: 2px solid #b08d57; outline-offset: 2px; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>페이지를 찾을 수 없습니다.</h1>
+    <p>주소가 잘못되었거나 더 이상 없는 페이지입니다.</p>
+    <a id="home" href="/">레퍼런스 목록으로</a>
+  </main>
+  <script>
+    // GitHub Pages 프로젝트 사이트(아이디.github.io/저장소이름/)면 저장소 주소로, 아니면 사이트 첫 화면으로
+    (function () {
+      var seg = location.pathname.split("/")[1];
+      if (/\.github\.io$/.test(location.hostname) && seg) document.getElementById("home").href = "/" + seg + "/";
+    })();
+  </script>
+</body>
+</html>

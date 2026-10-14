@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://enkyoon.github.io/design-guide-site/sitemap.xml
