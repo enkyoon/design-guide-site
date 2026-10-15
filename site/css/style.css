@@ -537,7 +537,7 @@ main:focus {
   transition: background-color var(--ease), border-color var(--ease);
 }
 
-.chip:hover {
+.chip:hover:not(:disabled) {
   background: var(--surface-2);
   color: var(--ink);
 }
@@ -553,6 +553,29 @@ main:focus {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E");
 }
 
+/* 색 필터: 체크 상자 대신 색 동그라미. 고르면 바깥에 검은 고리가 생긴다 */
+.chip--swatch::before {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  background: var(--swatch);
+  background-image: none;
+}
+
+.chip--swatch-mono::before {
+  background: linear-gradient(135deg, #111 50%, #fff 50%);
+}
+
+.chip--swatch.chip--active::before {
+  border-color: var(--surface);
+  background-color: var(--swatch);
+  background-image: none;
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.chip--swatch-mono.chip--active::before {
+  background: linear-gradient(135deg, #111 50%, #fff 50%);
+}
+
 /* 옵션 옆 숫자: 이 옵션을 고르면 나올 브랜드 수 */
 .chip__count {
   margin-left: auto;
@@ -565,6 +588,16 @@ main:focus {
 /* 지금 조건에서 결과가 0개인 옵션 (숫자 0도 함께 보임) */
 .chip--empty {
   opacity: 0.45;
+  cursor: default;
+}
+
+/* 그룹 제목 옆 작은 안내 (예: 스타일 "모두 포함") */
+.filter-group__hint {
+  margin-left: 6px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-soft);
 }
 
 .filter-more {
@@ -2174,6 +2207,22 @@ body.no-scroll {
 
   .chip::before {
     display: none;
+  }
+
+  /* 색 필터는 시트에서도 동그라미를 남긴다 */
+  .chip--swatch {
+    gap: 8px;
+    padding-left: 10px;
+  }
+
+  .chip--swatch::before {
+    display: block;
+    width: 18px;
+    height: 18px;
+  }
+
+  .chip--swatch.chip--active::before {
+    box-shadow: 0 0 0 2px var(--on-accent);
   }
 
   .chip__count {

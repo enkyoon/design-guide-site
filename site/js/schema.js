@@ -124,6 +124,61 @@ function industryGroupOf(site) {
   return INDUSTRY_GROUPS[site.industryGroup] ? site.industryGroup : "other";
 }
 
+// 대표 색 계열: palette의 primary·secondary 색(배경·글자용 neutral은 빼고)을 색상환 위치로 나눈다.
+// 유채색이 하나도 없는 브랜드는 "흑백". 한 브랜드가 여러 계열에 들 수 있다. dot = 필터 동그라미 색.
+const COLOR_FAMILY = {
+  red: { label: "빨강", dot: "#e5312f" },
+  orange: { label: "주황", dot: "#f2852b" },
+  yellow: { label: "노랑", dot: "#f5c518" },
+  green: { label: "초록", dot: "#3aa856" },
+  blue: { label: "파랑", dot: "#2f6fe0" },
+  purple: { label: "보라", dot: "#7b4fd6" },
+  pink: { label: "분홍", dot: "#ec6fa4" },
+  brown: { label: "갈색", dot: "#8a5a35" },
+  mono: { label: "흑백", dot: "" }
+};
+
+function hexToHsl(hex) {
+  const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || "").trim());
+  if (!m) return null;
+  const n = parseInt(m[1], 16);
+  const [r, g, b] = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map((v) => v / 255);
+  const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2, d = max - min;
+  if (d === 0) return { h: 0, s: 0, l };
+  const s = d / (1 - Math.abs(2 * l - 1));
+  let h = max === r ? ((g - b) / d) % 6 : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  h = (h * 60 + 360) % 360;
+  return { h, s, l };
+}
+
+// 색 하나 → 계열 키 (채도가 낮거나 아주 어둡고 밝으면 무채색이라 null)
+function colorFamilyOfHex(hex) {
+  const c = hexToHsl(hex);
+  if (!c || c.s < 0.3 || c.l < 0.1 || c.l > 0.93) return null;
+  const { h, s, l } = c;
+  const warm = h < 50 || h >= 345;
+  // 어두운 붉은·주황 기운(초콜릿·짙은 밤색)과 채도 낮은 금빛 베이지는 갈색으로 본다
+  if (warm && l < 0.4 && (s < 0.6 || (h >= 10 && h < 50))) return "brown";
+  if (h >= 20 && h < 55 && s < 0.45 && l < 0.75) return "brown";
+  if (h < 12 || h >= 345) return "red";
+  if (h < 40) return "orange";
+  if (h < 68) return "yellow";
+  if (h < 165) return "green";
+  if (h < 255) return "blue";
+  if (h < 290) return "purple";
+  return "pink";
+}
+
+function colorFamiliesOf(site) {
+  const fams = new Set();
+  (site.palette || []).forEach((p) => {
+    if (p.group === "neutral") return;
+    const f = colorFamilyOfHex(p.hex);
+    if (f) fams.add(f);
+  });
+  return fams.size ? [...fams] : ["mono"];
+}
+
 // 지역·테마 검색 별칭 (예: "korea", "japan", "dark"로 검색)
 const REGION_ALIASES = {
   korea: ["korea", "korean", "kr"],

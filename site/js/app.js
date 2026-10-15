@@ -3,7 +3,8 @@
 
 // ---------- 필터 정의 ----------
 // key = 상태 이름, param = URL 쿼리 이름, more = "상세 필터" 안에 접어 둘 그룹
-// 그룹 안에서는 OR(하나라도 해당), 그룹끼리는 AND(모두 해당)
+// 그룹끼리는 AND(모두 해당). 그룹 안은 기본 OR(하나라도 해당)이고, match: "all"인 그룹은 AND(고른 것을 모두 가진 브랜드만).
+// 스타일은 한 브랜드에 여러 개가 붙으므로 고를수록 원하는 느낌으로 좁혀지게 AND로 둔다. 업종·테마·지역처럼 값이 하나뿐인 그룹은 OR.
 const toOptions = (labels) => Object.entries(labels).map(([value, label]) => ({ value, label }));
 
 const FILTER_GROUPS = [
@@ -14,7 +15,15 @@ const FILTER_GROUPS = [
     options: Object.entries(INDUSTRY_GROUPS).map(([value, g]) => ({ value, label: g.label })),
     valuesOf: (site) => [industryGroupOf(site)]
   },
-  { key: "style", label: "스타일", param: "style", options: toOptions(MOOD_LABEL), valuesOf: (site) => site.moods },
+  { key: "style", label: "스타일", param: "style", match: "all", hint: "모두 포함", options: toOptions(MOOD_LABEL), valuesOf: (site) => site.moods },
+  {
+    key: "color",
+    label: "대표 색",
+    param: "color",
+    swatch: true,
+    options: Object.entries(COLOR_FAMILY).map(([value, f]) => ({ value, label: f.label, dot: f.dot })),
+    valuesOf: colorFamiliesOf
+  },
   { key: "theme", label: "테마", param: "theme", options: toOptions(THEME_LABEL), valuesOf: (site) => [site.theme] },
   { key: "region", label: "지역", param: "region", options: toOptions(REGION_LABEL), valuesOf: (site) => [site.region] },
   { key: "colorTone", label: "컬러톤", param: "tone", more: true, options: toOptions(COLOR_TONE_LABEL), valuesOf: (site) => [site.colorTone] },
@@ -91,6 +100,7 @@ function buildSearchText(site) {
     ...(THEME_ALIASES[site.theme] || []),
     REGION_LABEL[site.region],
     ...(REGION_ALIASES[site.region] || []),
+    ...colorFamiliesOf(site).map((f) => COLOR_FAMILY[f].label),
     layout.type,
     LAYOUT_TYPE_LABEL[layout.type],
     layout.density,
@@ -118,7 +128,9 @@ function matches(site, skipKey) {
     if (g.key === skipKey) continue;
     const selected = state.filters[g.key];
     if (selected.size === 0) continue;
-    if (!site._facets[g.key].some((v) => selected.has(v))) return false;
+    const values = site._facets[g.key];
+    const ok = g.match === "all" ? [...selected].every((v) => values.includes(v)) : values.some((v) => selected.has(v));
+    if (!ok) return false;
   }
   if (state.favoritesOnly && !isFavorite(site.slug)) return false;
   if (state.query) {
@@ -158,6 +170,12 @@ function renderFilterPanel() {
     const legend = document.createElement("legend");
     legend.className = "filter-group__title";
     legend.textContent = group.label;
+    if (group.hint) {
+      const hint = document.createElement("span");
+      hint.className = "filter-group__hint";
+      hint.textContent = group.hint;
+      legend.appendChild(hint);
+    }
     const chipsEl = document.createElement("div");
     chipsEl.className = "filter-group__chips";
     chipRefs[group.key] = {};
@@ -165,6 +183,12 @@ function renderFilterPanel() {
       const chip = document.createElement("button");
       chip.type = "button";
       chip.className = "chip";
+      // 색 그룹은 체크 상자 대신 색 동그라미 (흑백은 반반 동그라미)
+      if (group.swatch) {
+        chip.classList.add("chip--swatch");
+        if (opt.dot) chip.style.setProperty("--swatch", opt.dot);
+        else chip.classList.add("chip--swatch-mono");
+      }
       chip.setAttribute("aria-pressed", "false");
       const label = document.createElement("span");
       label.textContent = opt.label;
@@ -194,14 +218,16 @@ function renderFilterSkeleton() {
   });
 }
 
-// 각 옵션 옆 숫자 = 지금 조건에서 그 옵션을 고르면 나올 브랜드 수 (같은 그룹 조건은 빼고 계산)
+// 각 옵션 옆 숫자 = 그 옵션을 더 고르면 나올 브랜드 수.
+// OR 그룹은 같은 그룹 조건을 빼고 세고(고를수록 늘어남), AND 그룹은 지금 조건을 모두 넣고 센다(고를수록 줄어듦).
+// 0개가 되는 옵션은 누를 수 없게 흐리게 둔다.
 function updateFilterPanel() {
   FILTER_GROUPS.forEach((group) => {
     const refs = chipRefs[group.key];
     if (!refs) return;
     const counts = {};
     allSites.forEach((site) => {
-      if (!matches(site, group.key)) return;
+      if (!matches(site, group.match === "all" ? undefined : group.key)) return;
       site._facets[group.key].forEach((v) => (counts[v] = (counts[v] || 0) + 1));
     });
     Object.entries(refs).forEach(([value, { chip, count, label }]) => {
@@ -209,6 +235,7 @@ function updateFilterPanel() {
       const n = counts[value] || 0;
       chip.classList.toggle("chip--active", active);
       chip.classList.toggle("chip--empty", !active && n === 0);
+      chip.disabled = !active && n === 0;
       chip.setAttribute("aria-pressed", String(active));
       chip.setAttribute("aria-label", `${group.label} ${label}, ${n}개`);
       count.textContent = n;
