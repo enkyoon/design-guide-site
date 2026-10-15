@@ -90,7 +90,7 @@ create policy "brands are publicly readable"
 -- drop table if exists public.sites;
 
 -- 자동 생성 파일: 직접 고치지 말고 data/brands.json을 고친 뒤 tools/build-seed.ps1을 실행하세요.
--- 브랜드 30개. sql/schema.sql을 먼저 실행한 뒤 이 파일을 실행합니다.
+-- 브랜드 69개. sql/schema.sql을 먼저 실행한 뒤 이 파일을 실행합니다.
 -- 같은 slug가 이미 있으면 내용을 덮어씁니다(여러 번 실행해도 안전).
 
 insert into public.brands (
@@ -2012,7 +2012,9 @@ from jsonb_populate_recordset(null::public.brands, $seed$
     "industry_detail": "패션 (SPA)",
     "theme": "light",
     "color_tone": "warm",
-    "description": "강렬한 레드 로고와 그리드형 상품 나열로 실용적인 쇼핑 경험을 구성",
+    "description": "작은 레드 로고 아래 화면을 꽉 채운 화보, 그 뒤로 이어지는 그리드형 상품 나열로 실용적인 쇼핑 경험을 구성",
+    "preview_image": "assets/previews/uniqlo.jpg",
+    "preview_captured_on": "2026-10-15",
     "design_keywords": [
       "minimal",
       "bold"
@@ -2247,33 +2249,39 @@ from jsonb_populate_recordset(null::public.brands, $seed$
     "country": "FR",
     "industry": "fashion",
     "industry_detail": "명품/뷰티",
-    "theme": "dark",
+    "theme": "light",
     "color_tone": "grayish",
-    "description": "블랙과 골드의 대비, 클래식한 세리프 타이포로 럭셔리한 헤리티지를 강조",
+    "description": "흰 바탕에 가운데 로고, 화면을 꽉 채운 화보와 아주 작은 글씨로 절제된 럭셔리를 표현",
+    "preview_image": "assets/previews/louisvuitton.jpg",
+    "preview_captured_on": "2026-10-15",
     "design_keywords": [
       "luxury",
       "editorial"
     ],
     "tags": [
       "헤리티지",
-      "클래식"
+      "풀스크린 화보",
+      "가운데 로고",
+      "작은 글씨"
     ],
     "colors": {
       "primary": [
         {
-          "hex": "#000000"
-        },
-        {
-          "hex": "#c9a86a"
-        },
-        {
-          "hex": "#ffffff"
+          "hex": "#000000",
+          "role": "로고·텍스트"
         }
-      ]
+      ],
+      "neutral": [
+        {
+          "hex": "#ffffff",
+          "role": "배경"
+        }
+      ],
+      "note": "흑백 바탕에 색은 화보 사진에서만 나온다."
     },
     "typography": {
-      "family": "LV Serif (custom)",
-      "category": "serif"
+      "family": "Louis Vuitton (전용 서체)",
+      "category": "custom"
     },
     "sources": [
       {
@@ -2294,7 +2302,9 @@ from jsonb_populate_recordset(null::public.brands, $seed$
     "industry_detail": "명품/뷰티",
     "theme": "light",
     "color_tone": "grayish",
-    "description": "블랙앤화이트의 절제된 대비와 세리프 타이포로 시대를 초월한 우아함을 표현",
+    "description": "블랙앤화이트의 절제된 대비와 대문자 로고타입, 대형 화보로 시대를 초월한 우아함을 표현",
+    "preview_image": "assets/previews/chanel.jpg",
+    "preview_captured_on": "2026-10-15",
     "design_keywords": [
       "luxury",
       "editorial",
@@ -2326,9 +2336,9 @@ from jsonb_populate_recordset(null::public.brands, $seed$
       "note": "흑백만으로 구성한다. 색은 화보 사진에서만 나온다."
     },
     "typography": {
-      "family": "Chanel Serif (custom)",
-      "category": "serif",
-      "description": "대문자 로고타입과 절제된 세리프·산세리프 조합. 글자 수를 최소화한다."
+      "family": "Chanel (전용 서체)",
+      "category": "custom",
+      "description": "대문자 로고타입과 단정한 산세리프. 글자 수를 최소화한다."
     },
     "layout": {
       "type": "editorial",
@@ -2520,6 +2530,1195 @@ from jsonb_populate_recordset(null::public.brands, $seed$
       }
     ],
     "review_status": "draft"
+  },
+  {
+    "slug": "bluebottle",
+    "name": "Blue Bottle Coffee",
+    "website_url": "https://bluebottlecoffee.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "food",
+    "industry_detail": "커피/카페",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "흑백 사진과 자간을 넓힌 대문자 메뉴, 파란 병 로고 하나로 절제된 커피 브랜드를 표현",
+    "preview_image": "assets/previews/bluebottle.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["minimal", "editorial"],
+    "mood": ["차분함", "정제됨"],
+    "tags": ["흑백 사진", "대문자 메뉴", "파란 포인트", "슬라이드 배너"],
+    "colors": {
+      "primary": [{ "hex": "#00a9e0", "role": "로고 포인트" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#f4f2ec", "role": "상단 띠·헤더 배경" }, { "hex": "#333333", "role": "버튼·텍스트" }],
+      "note": "유채색은 로고의 파랑 하나뿐이고, 나머지는 흑백 사진과 무채색이다."
+    },
+    "typography": { "category": "sans", "description": "자간을 넓힌 대문자 산세리프로 메뉴와 제목을 정돈한다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://bluebottlecoffee.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "oatly",
+    "name": "Oatly",
+    "website_url": "https://www.oatly.com",
+    "region": "europe",
+    "country": "SE",
+    "industry": "food",
+    "industry_detail": "식물성 음료",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "모눈종이 배경과 손글씨 같은 레터링, 장난스러운 문구로 식품 브랜드를 잡지처럼 풀어냄",
+    "preview_image": "assets/previews/oatly.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["playful", "bold", "editorial"],
+    "mood": ["장난스러움", "솔직함"],
+    "tags": ["모눈종이 배경", "손글씨 레터링", "브라우저 창 같은 틀", "대문자 문구"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "테두리·텍스트" }],
+      "secondary": [{ "hex": "#ffd27a", "role": "분류 이름표" }],
+      "neutral": [{ "hex": "#fbf9f0", "role": "모눈 배경" }, { "hex": "#ffffff", "role": "카드 바탕" }],
+      "note": "크림색 모눈 위에 검은 선으로 틀을 그리고, 노랑은 작은 이름표에만 쓴다."
+    },
+    "typography": { "category": "display", "description": "손으로 그린 듯한 대문자 레터링과 좁은 고딕을 섞어 말투를 만든다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.oatly.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "fritz",
+    "name": "프릳츠",
+    "website_url": "https://fritz.co.kr",
+    "region": "korea",
+    "country": "KR",
+    "industry": "food",
+    "industry_detail": "커피/베이커리",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "한옥 매장 사진을 화면 가득 깔고 물개 캐릭터 로고와 한글·영문 메뉴를 나란히 둔 레트로 감성",
+    "preview_image": "assets/previews/fritz.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "friendly"],
+    "mood": ["따뜻함", "레트로"],
+    "tags": ["풀스크린 사진", "캐릭터 로고", "한영 병기 메뉴", "왼쪽 세로 메뉴"],
+    "colors": {
+      "primary": [{ "hex": "#1d3a5f", "role": "상단 띠 배너" }],
+      "neutral": [{ "hex": "#ffffff", "role": "텍스트·로고" }, { "hex": "#2b2620", "role": "어둡게 누른 사진 톤" }],
+      "note": "사진을 어둡게 눌러 흰 글씨를 얹고, 남색은 상단 띠에만 쓴다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://fritz.co.kr" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "arabica",
+    "name": "% Arabica",
+    "website_url": "https://arabica.com",
+    "region": "japan",
+    "country": "JP",
+    "industry": "food",
+    "industry_detail": "커피/카페",
+    "theme": "dark",
+    "color_tone": "multi",
+    "description": "벽화 영상을 화면 전체에 깔고 가운데 로고만 남긴 몰입형 첫 화면",
+    "preview_image": "assets/previews/arabica.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "minimal"],
+    "mood": ["감각적", "여유"],
+    "tags": ["풀스크린 영상", "가운데 로고", "작은 대문자 메뉴", "브랜드 필름"],
+    "colors": {
+      "neutral": [{ "hex": "#ffffff", "role": "로고·메뉴" }],
+      "note": "UI는 흰 글씨뿐이고, 색은 모두 영상에서 나온다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://arabica.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "aman",
+    "name": "Aman",
+    "website_url": "https://www.aman.com",
+    "region": "europe",
+    "country": "CH",
+    "industry": "travel",
+    "industry_detail": "럭셔리 호텔/리조트",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "베이지 바탕에 여백을 크게 두고 영상 한 장과 세리프 문구만 놓은 조용한 럭셔리",
+    "preview_image": "assets/previews/aman.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "minimal", "editorial"],
+    "mood": ["고요함", "고급스러움"],
+    "tags": ["넓은 여백", "세리프 이탤릭", "베이지 배경", "영상 히어로"],
+    "colors": {
+      "primary": [{ "hex": "#2b2b2b", "role": "예약 버튼" }],
+      "neutral": [{ "hex": "#f2ede6", "role": "배경" }, { "hex": "#ffffff", "role": "영상 위 문구" }],
+      "note": "따뜻한 베이지와 짙은 회색만 쓰고, 색감은 영상에 맡긴다."
+    },
+    "typography": { "category": "serif", "description": "자간을 넓힌 대문자 세리프에 이탤릭 한 단어를 섞어 리듬을 준다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.aman.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "hoshinoya",
+    "name": "HOSHINOYA",
+    "website_url": "https://hoshinoresorts.com/en/brands/hoshinoya/",
+    "region": "japan",
+    "country": "JP",
+    "industry": "travel",
+    "industry_detail": "럭셔리 료칸/리조트",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "검은 바탕에 세로쓰기 로고와 세리프 문구, 이어지는 석양 사진으로 일본식 고요함을 연출",
+    "preview_image": "assets/previews/hoshinoya.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "editorial"],
+    "mood": ["고요함", "몰입"],
+    "tags": ["세로쓰기", "검은 배경", "세리프 문구", "가격 표시 예약 버튼"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "배경" }],
+      "secondary": [{ "hex": "#1aa3d9", "role": "예약 버튼" }],
+      "neutral": [{ "hex": "#ffffff", "role": "텍스트·헤더" }],
+      "note": "검은 면과 사진의 노을빛이 대비를 만들고, 파랑은 예약 버튼에만 쓴다."
+    },
+    "typography": { "category": "serif", "description": "세로쓰기 일본어 로고와 대문자 세리프 문구를 함께 쓴다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://hoshinoresorts.com/en/brands/hoshinoya/" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "koreanair",
+    "name": "대한항공",
+    "website_url": "https://www.koreanair.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "travel",
+    "industry_detail": "항공사",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "하늘색 그라데이션 위에 항공권 검색 카드를 바로 올려, 예약을 첫 화면의 주인공으로 둔 실용형 구성",
+    "preview_image": "assets/previews/koreanair.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["friendly", "technical"],
+    "mood": ["신뢰", "산뜻함"],
+    "tags": ["검색 위젯", "그라데이션 배경", "둥근 카드", "탭 메뉴"],
+    "colors": {
+      "primary": [{ "hex": "#00256c", "role": "로고·선택된 탭" }],
+      "secondary": [{ "hex": "#4fb3e8", "role": "검색 버튼" }],
+      "neutral": [{ "hex": "#ffffff", "role": "카드 바탕" }, { "hex": "#e8f4fc", "role": "배경" }],
+      "note": "하늘을 떠올리게 하는 파랑 계열로만 구성한다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.koreanair.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "porsche",
+    "name": "Porsche",
+    "website_url": "https://www.porsche.com/korea/ko/",
+    "region": "europe",
+    "country": "DE",
+    "industry": "mobility",
+    "industry_detail": "자동차",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "검은 화면에 붉은 빛줄기 영상과 아주 큰 한글 헤드라인만 남겨, 차보다 감정을 먼저 보여 주는 첫 화면",
+    "analysis": "정보를 거의 지우고 영상과 초대형 문장 하나만 남겨서 광고 한 장면처럼 보인다. 메뉴·버튼은 작고 반투명하게 눌러 영상의 긴장감을 해치지 않는다.",
+    "preview_image": "assets/previews/porsche.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "bold", "minimal"],
+    "mood": ["긴장감", "고급스러움", "자신감"],
+    "tags": ["풀스크린 영상", "초대형 헤드라인", "와이드 로고", "반투명 버튼"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "배경" }],
+      "secondary": [{ "hex": "#d5001c", "role": "영상 속 빛·강조" }],
+      "neutral": [{ "hex": "#ffffff", "role": "헤드라인·메뉴" }, { "hex": "#3c3c3c", "role": "반투명 버튼 바탕" }],
+      "note": "검정과 흰 글씨만으로 UI를 만들고, 빨강은 영상 속 빛으로만 등장한다."
+    },
+    "typography": {
+      "family": "Porsche Next",
+      "category": "sans",
+      "heading": "화면 높이의 절반에 가까울 만큼 크게, 짧게 끊어 여러 줄로",
+      "body": "작고 담백한 버튼·메뉴 글씨",
+      "description": "가는 굵기의 초대형 헤드라인과 아주 작은 UI 글씨의 극단적 크기 차이가 위계를 만든다.",
+      "sample": { "heading": "스포츠카에 대한 사랑으로", "body": "더 알아보기", "weight": 400, "tracking": "-0.01em" }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "full",
+      "alignment": "left",
+      "whitespace": "generous",
+      "density": "spacious",
+      "grid": "영상 위 왼쪽에 문장 한 덩어리와 버튼 하나",
+      "blocks": ["nav", "hero"]
+    },
+    "ui_style": {
+      "radius": "slight",
+      "shadow": "none",
+      "depth": "glass",
+      "button": { "shape": "rounded", "style": "filled", "note": "반투명 회색 바탕의 작은 버튼" },
+      "navigation": { "type": "minimal", "note": "왼쪽 메뉴, 가운데 와이드 로고, 오른쪽 아이콘만 둔 얇은 바" }
+    },
+    "visual": {
+      "image_style": ["photography"],
+      "characteristics": ["어둡게 누른 영상", "붉은 빛의 곡선"],
+      "graphics": "장식 그래픽 없이 영상과 글자만 쓴다"
+    },
+    "design_characteristics": [
+      { "title": "문장 하나가 첫 화면을 차지한다", "text": "제품명이나 가격 대신 브랜드의 태도를 담은 짧은 문장을 아주 크게 놓는다." },
+      { "title": "영상이 곧 배경이자 색", "text": "UI는 흑백으로 비워 두고, 빨간 빛줄기 같은 색은 영상 안에서만 나온다." },
+      { "title": "작고 반투명한 컨트롤", "text": "메뉴·버튼을 작게, 반투명하게 만들어 영상 위에 떠 있는 느낌을 준다." },
+      { "title": "와이드 로고타입", "text": "옆으로 넓은 로고를 가운데 두어 상단 바만으로 브랜드를 알아보게 한다." }
+    ],
+    "best_for": ["프리미엄 자동차·제품 출시 페이지", "감성 중심 브랜드 캠페인", "영상 자산이 강한 브랜드"],
+    "things_to_avoid": ["첫 화면에서 모델·가격 같은 정보를 바로 찾기 어렵다", "어두운 영상 위 작은 글씨는 대비가 약해질 수 있다", "영상이 늦게 뜨면 빈 검은 화면만 보인다"],
+    "sources": [
+      { "type": "official", "label": "공식 사이트", "url": "https://www.porsche.com/korea/ko/" },
+      { "type": "design-system", "label": "Porsche Design System", "url": "https://designsystem.porsche.com/" }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "genesis",
+    "name": "Genesis",
+    "website_url": "https://www.genesis.com/kr/ko",
+    "region": "korea",
+    "country": "KR",
+    "industry": "mobility",
+    "industry_detail": "자동차",
+    "theme": "dark",
+    "color_tone": "grayish",
+    "description": "차가 달리는 영상을 화면 가득 깔고 왼쪽 아래에 모델명만 작게 둔 절제된 프리미엄",
+    "preview_image": "assets/previews/genesis.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "minimal"],
+    "mood": ["여유", "고급스러움"],
+    "tags": ["풀스크린 영상", "왼쪽 아래 문구", "투명 내비게이션", "슬라이드"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "기본 색" }],
+      "neutral": [{ "hex": "#ffffff", "role": "텍스트·메뉴" }],
+      "note": "흑백 UI만 두고 풍경 영상의 자연색을 그대로 살린다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.genesis.com/kr/ko" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "polestar",
+    "name": "Polestar",
+    "website_url": "https://www.polestar.com/kr/",
+    "region": "europe",
+    "country": "SE",
+    "industry": "mobility",
+    "industry_detail": "전기차",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "흑백 사진과 흑백 UI만 써서 색 없이 차의 형태를 드러내는 스칸디나비아식 미니멀",
+    "preview_image": "assets/previews/polestar.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["minimal", "technical"],
+    "mood": ["차가움", "정제됨"],
+    "tags": ["흑백 사진", "얇은 테두리 버튼", "상단 띠 배너", "모델명 메뉴"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "텍스트·상단 띠" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경·버튼 테두리" }],
+      "note": "사진까지 흑백으로 맞춰 색을 완전히 뺀다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.polestar.com/kr/" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "revolut",
+    "name": "Revolut",
+    "website_url": "https://www.revolut.com",
+    "region": "europe",
+    "country": "GB",
+    "industry": "finance",
+    "industry_detail": "핀테크",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "하늘 사진 위에 아주 큰 헤드라인과 앱 화면 조각을 겹쳐, 은행을 라이프스타일 앱처럼 보여 줌",
+    "preview_image": "assets/previews/revolut.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["bold", "modern"],
+    "mood": ["자신감", "자유로움"],
+    "tags": ["초대형 헤드라인", "사진 위 UI 카드", "알약 버튼", "인물 사진"],
+    "colors": {
+      "primary": [{ "hex": "#191c1f", "role": "주요 버튼" }],
+      "neutral": [{ "hex": "#ffffff", "role": "헤드라인·보조 버튼" }],
+      "note": "버튼은 검정과 흰색뿐이고, 파랑은 하늘 사진에서 나온다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.revolut.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "hyundaicard",
+    "name": "현대카드",
+    "website_url": "https://www.hyundaicard.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "finance",
+    "industry_detail": "카드사",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "카드 실물과 굵은 영문 타이포를 상품처럼 진열해, 금융사를 디자인 브랜드처럼 보이게 하는 구성",
+    "preview_image": "assets/previews/hyundaicard.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "bold"],
+    "mood": ["세련됨", "자신감"],
+    "tags": ["카드 진열", "굵은 영문 타이포", "오른쪽 로그인 패널", "포스터형 배너"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "텍스트·버튼" }],
+      "secondary": [{ "hex": "#e60012", "role": "대표 카드 색" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }],
+      "note": "흑백 바탕 위에 카드 실물과 포스터 배너가 색을 맡는다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.hyundaicard.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "29cm",
+    "name": "29CM",
+    "website_url": "https://www.29cm.co.kr",
+    "region": "korea",
+    "country": "KR",
+    "industry": "commerce",
+    "industry_detail": "편집숍",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "큰 영문 메뉴와 3단 화보를 잡지 표지처럼 배치한 감성 편집숍",
+    "preview_image": "assets/previews/29cm.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "bold"],
+    "mood": ["감각적", "트렌디"],
+    "tags": ["3단 화보", "영문 대문자 카테고리", "매거진", "큰 메뉴"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "텍스트" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }],
+      "note": "UI는 흑백이고, 기획전 화보가 매번 다른 색을 가져온다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.29cm.co.kr" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "teenageengineering",
+    "name": "Teenage Engineering",
+    "website_url": "https://teenage.engineering",
+    "region": "europe",
+    "country": "SE",
+    "industry": "commerce",
+    "industry_detail": "전자기기/음향",
+    "theme": "dark",
+    "color_tone": "grayish",
+    "description": "검은 화면에 도면 같은 선 아이콘 메뉴와 흑백 사진만 둔, 제품 설명서 같은 실험적 구성",
+    "analysis": "메뉴를 숨기지 않고 아이콘과 하위 항목까지 펼쳐 두어 첫 화면이 곧 사이트 지도가 된다. 흑백과 가는 선만 써서 하드웨어 회사다운 정밀함과 장난기를 함께 보여 준다.",
+    "preview_image": "assets/previews/teenageengineering.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["technical", "playful"],
+    "mood": ["실험적", "정밀함", "장난기"],
+    "tags": ["선 아이콘", "흑백 사진", "펼쳐 둔 메뉴", "소문자 타이포"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "배경" }],
+      "neutral": [{ "hex": "#ffffff", "role": "텍스트·아이콘" }],
+      "note": "첫 화면은 흑백만 쓴다. 사진까지 흑백으로 맞춘다."
+    },
+    "typography": {
+      "category": "sans",
+      "heading": "메뉴 제목을 가는 소문자로, 본문보다 한두 단계만 크게",
+      "body": "메뉴 아래 작은 글씨로 하위 항목을 나열",
+      "description": "가늘고 담백한 소문자 산세리프로 기계 설명서 같은 인상을 만든다.",
+      "sample": { "heading": "teenage engineering", "body": "instruments · audio · designs", "weight": 300, "tracking": "0" }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "full",
+      "alignment": "left",
+      "whitespace": "balanced",
+      "density": "comfortable",
+      "grid": "상단에 아이콘+글자 메뉴 다섯 칸을 한 줄로 두고 아래를 사진으로 채운다",
+      "blocks": ["nav", "full-image"]
+    },
+    "ui_style": {
+      "radius": "sharp",
+      "shadow": "none",
+      "depth": "flat",
+      "navigation": { "type": "dense", "note": "아이콘·제목·하위 항목을 모두 펼쳐 둔 상단 메뉴" }
+    },
+    "visual": {
+      "image_style": ["photography"],
+      "characteristics": ["흑백 사진", "네온사인 같은 흰 글자"],
+      "icon_style": "제품 도면처럼 가는 선 아이콘",
+      "graphics": "기하 도형을 조합한 로고"
+    },
+    "design_characteristics": [
+      { "title": "메뉴를 펼쳐 둔다", "text": "햄버거 버튼에 숨기지 않고 하위 항목까지 첫 화면에 보여 준다." },
+      { "title": "도면 같은 아이콘", "text": "가는 선으로 그린 아이콘이 메뉴마다 붙어 하드웨어 회사의 성격을 드러낸다." },
+      { "title": "흑백 한 가지 톤", "text": "사진까지 흑백으로 맞춰 화면 전체를 하나의 인쇄물처럼 보이게 한다." }
+    ],
+    "best_for": ["하드웨어·전자제품 브랜드", "디자인 스튜디오 포트폴리오", "개성을 강하게 드러내야 하는 작은 브랜드"],
+    "things_to_avoid": ["가늘고 작은 글씨는 읽기 어렵다", "일반 쇼핑몰과 생김새가 달라 처음 온 사람이 헤맬 수 있다"],
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://teenage.engineering" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "balmuda",
+    "name": "BALMUDA",
+    "website_url": "https://www.balmuda.com/jp/",
+    "region": "japan",
+    "country": "JP",
+    "industry": "commerce",
+    "industry_detail": "가전",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "어두운 그라데이션 배경에 제품을 조명처럼 비추고 주황 세리프 문구를 얹은 프리미엄 가전 광고",
+    "preview_image": "assets/previews/balmuda.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "minimal"],
+    "mood": ["따뜻함", "고급스러움"],
+    "tags": ["제품 클로즈업", "세리프 헤드라인", "어두운 배경", "주황 포인트"],
+    "colors": {
+      "primary": [{ "hex": "#e8641b", "role": "헤드라인 강조" }],
+      "neutral": [{ "hex": "#1a1a1a", "role": "배경" }, { "hex": "#ffffff", "role": "제품명·메뉴" }],
+      "note": "토스터 불빛과 같은 주황을 헤드라인에 써서 제품과 글자를 이어 준다."
+    },
+    "typography": { "category": "serif", "description": "세리프 헤드라인과 둥근 산세리프 제품명을 위아래로 짝지운다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.balmuda.com/jp/" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "aesop",
+    "name": "Aesop",
+    "website_url": "https://kr.aesop.com",
+    "region": "other",
+    "country": "AU",
+    "industry": "fashion",
+    "industry_detail": "뷰티/스킨케어",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "호박색 병을 어둡게 비춘 사진 위에 작은 글씨만 얹어, 약국 같은 차분함과 고급스러움을 함께 표현",
+    "analysis": "사진의 호박색과 낮은 조명이 곧 브랜드 색이 된다. 글씨를 작게 줄이고 버튼을 얇은 테두리로만 그려, 화면에서 가장 큰 것은 언제나 제품 사진이다.",
+    "preview_image": "assets/previews/aesop.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "editorial", "minimal"],
+    "mood": ["차분함", "따뜻함", "지적임"],
+    "tags": ["호박색 톤", "제품 클로즈업", "작은 글씨", "테두리 버튼"],
+    "colors": {
+      "primary": [{ "hex": "#6b4423", "role": "사진 속 호박색 병" }],
+      "neutral": [{ "hex": "#ffffff", "role": "사진 위 텍스트" }, { "hex": "#252525", "role": "어두운 사진 톤" }],
+      "note": "UI는 흰 글씨와 얇은 선뿐이고, 따뜻한 갈색은 사진에서 나온다."
+    },
+    "typography": {
+      "category": "sans",
+      "heading": "중간 크기로 차분하게, 굵기 차이를 거의 두지 않는다",
+      "body": "작고 단정한 본문",
+      "description": "작은 산세리프를 크기와 여백만으로 나눠 위계를 만든다."
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "mixed",
+      "alignment": "center",
+      "whitespace": "generous",
+      "density": "comfortable",
+      "grid": "가운데 로고 아래 카테고리 한 줄, 그 아래 화면을 채운 사진과 가운데 문구",
+      "blocks": ["nav", "hero"]
+    },
+    "ui_style": {
+      "radius": "sharp",
+      "shadow": "none",
+      "depth": "flat",
+      "button": { "shape": "sharp", "style": "outline", "note": "각진 얇은 테두리 버튼" },
+      "navigation": { "type": "dense", "note": "가운데 로고 아래 카테고리를 한 줄로 늘어놓은 메뉴" }
+    },
+    "visual": {
+      "image_style": ["product", "photography"],
+      "characteristics": ["낮은 조도", "따뜻한 색온도", "제품을 반복해 늘어놓은 구도"],
+      "graphics": "장식 그래픽 없이 사진과 글자만 쓴다"
+    },
+    "design_characteristics": [
+      { "title": "사진 톤이 브랜드 색", "text": "로고 색 대신 호박색 병과 낮은 조명이 브랜드 인상을 만든다." },
+      { "title": "작은 글씨", "text": "글씨를 작게 줄여 사진을 앞세우고, 조용한 분위기를 유지한다." },
+      { "title": "각진 테두리 버튼", "text": "채운 버튼 대신 얇은 선만 그려 사진 위에서도 무게감이 가볍다." }
+    ],
+    "best_for": ["뷰티·향수 브랜드", "프리미엄 생활용품", "매장 분위기를 온라인으로 옮기고 싶은 브랜드"],
+    "things_to_avoid": ["어두운 사진 위 작은 글씨는 읽기 어렵다", "상단 띠 배너·화살표·채팅 버튼이 겹치면 첫 화면이 복잡해진다"],
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://kr.aesop.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "gentlemonster",
+    "name": "Gentle Monster",
+    "website_url": "https://www.gentlemonster.com/kr/ko",
+    "region": "korea",
+    "country": "KR",
+    "industry": "fashion",
+    "industry_detail": "아이웨어",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "어두운 인물 화보를 꽉 채우고 가운데 로고만 둔, 패션 캠페인 같은 첫 화면",
+    "preview_image": "assets/previews/gentlemonster.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["bold", "luxury", "editorial"],
+    "mood": ["강렬함", "세련됨"],
+    "tags": ["풀스크린 화보", "협업 캠페인", "테두리 알약 버튼", "가운데 로고"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "기본 색" }],
+      "neutral": [{ "hex": "#ffffff", "role": "로고·텍스트" }, { "hex": "#f3f4f6", "role": "아래 섹션 배경" }],
+      "note": "흑백 UI 위에 어두운 화보가 분위기를 만든다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.gentlemonster.com/kr/ko" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "kinfolk",
+    "name": "Kinfolk",
+    "website_url": "https://www.kinfolk.com",
+    "region": "europe",
+    "country": "DK",
+    "industry": "media",
+    "industry_detail": "라이프스타일 매거진",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "흰 바탕 가운데에 세리프 제목과 잡지 표지 한 장만 놓은, 인쇄 잡지를 그대로 옮긴 듯한 구성",
+    "preview_image": "assets/previews/kinfolk.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "minimal"],
+    "mood": ["고요함", "지적임"],
+    "tags": ["세리프 제목", "표지 이미지", "넓은 여백", "가운데 정렬"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "텍스트" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }],
+      "note": "흑백만 쓰고, 색은 표지와 사진이 가져온다."
+    },
+    "typography": { "category": "serif", "description": "가는 대문자 세리프 제목으로 인쇄 잡지의 인상을 만든다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.kinfolk.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "duolingo",
+    "name": "Duolingo",
+    "website_url": "https://www.duolingo.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "education",
+    "industry_detail": "언어 학습",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "선명한 연두 버튼과 캐릭터 일러스트로 공부를 게임처럼 가볍게 보이게 함",
+    "preview_image": "assets/previews/duolingo.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["playful", "friendly"],
+    "mood": ["경쾌함", "친근함"],
+    "tags": ["캐릭터", "일러스트", "입체 버튼", "연두색"],
+    "colors": {
+      "primary": [{ "hex": "#58cc02", "role": "로고·주요 버튼" }],
+      "secondary": [{ "hex": "#1cb0f6", "role": "보조 버튼 글씨" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#e5e5e5", "role": "테두리" }],
+      "note": "연두 하나를 강하게 쓰고, 다른 색은 일러스트에 맡긴다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.duolingo.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "oura",
+    "name": "Oura",
+    "website_url": "https://ouraring.com",
+    "region": "europe",
+    "country": "FI",
+    "industry": "healthcare",
+    "industry_detail": "웨어러블 헬스",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "살구빛 배경과 손 사진, 가는 명조 헤드라인으로 건강 기기를 장신구처럼 보여 줌",
+    "preview_image": "assets/previews/oura.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "minimal"],
+    "mood": ["따뜻함", "정제됨"],
+    "tags": ["명조 헤드라인", "제품 클로즈업", "따뜻한 배경", "파란 알약 버튼"],
+    "colors": {
+      "primary": [{ "hex": "#2f6be0", "role": "구매 버튼" }],
+      "neutral": [{ "hex": "#f2e6dc", "role": "배경" }, { "hex": "#2b2b2b", "role": "텍스트" }],
+      "note": "살구빛 배경과 피부 톤을 맞추고, 파랑은 구매 버튼 하나에만 쓴다."
+    },
+    "typography": { "category": "serif", "description": "가는 명조 헤드라인과 작은 고딕 본문을 짝지운다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://ouraring.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "masterclass",
+    "name": "MasterClass",
+    "website_url": "https://www.masterclass.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "education",
+    "industry_detail": "온라인 강의",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "검은 바탕에 아주 굵은 압축 대문자와 강사 인물 사진 기둥을 세워, 강의를 영화 예고편처럼 보여 줌",
+    "preview_image": "assets/previews/masterclass.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["bold", "editorial"],
+    "mood": ["몰입", "자신감"],
+    "tags": ["압축 대문자", "인물 사진 그리드", "다크 배경", "체크리스트 질문"],
+    "colors": {
+      "primary": [{ "hex": "#e32652", "role": "가입 버튼·구분선" }],
+      "neutral": [{ "hex": "#000000", "role": "배경" }, { "hex": "#222326", "role": "선택 항목 바탕" }, { "hex": "#ffffff", "role": "텍스트" }],
+      "note": "검은 화면에 빨강은 가입 버튼과 짧은 구분선에만 쓴다."
+    },
+    "typography": { "category": "display", "description": "아주 굵고 폭이 좁은 대문자 헤드라인과 작은 산세리프 본문을 짝지운다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.masterclass.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "headspace",
+    "name": "Headspace",
+    "website_url": "https://www.headspace.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "healthcare",
+    "industry_detail": "명상·정신건강",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "주황 동그라미 캐릭터와 둥근 카드, 노란 띠 배너로 정신건강 앱을 가볍고 다정하게 보여 줌",
+    "preview_image": "assets/previews/headspace.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["friendly", "playful"],
+    "mood": ["다정함", "편안함"],
+    "tags": ["둥근 카드", "캐릭터", "노란 띠 배너", "앱 화면 목업"],
+    "colors": {
+      "primary": [{ "hex": "#f47d31", "role": "로고·캐릭터" }],
+      "secondary": [{ "hex": "#0a5ce8", "role": "가입 버튼" }, { "hex": "#ffd400", "role": "상단 띠 배너" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#f9f4f2", "role": "카드 바탕" }, { "hex": "#2b2b2b", "role": "버튼·텍스트" }],
+      "note": "주황·노랑의 따뜻한 색에 파란 가입 버튼 하나로 대비를 준다."
+    },
+    "typography": { "category": "sans", "description": "둥글고 굵은 산세리프 제목으로 부드러운 말투를 만든다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.headspace.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "class101",
+    "name": "클래스101",
+    "website_url": "https://class101.net/ko",
+    "region": "korea",
+    "country": "KR",
+    "industry": "education",
+    "industry_detail": "온라인 클래스",
+    "theme": "dark",
+    "color_tone": "multi",
+    "description": "검은 바탕에 주황 버튼과 분야별 사진 타일을 두 줄로 흘려, 수많은 클래스를 한눈에 훑게 함",
+    "preview_image": "assets/previews/class101.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["bold", "friendly"],
+    "mood": ["활기", "다채로움"],
+    "tags": ["다크 배경", "사진 타일", "아이콘 카테고리 메뉴", "카운트다운 띠"],
+    "colors": {
+      "primary": [{ "hex": "#ff5a1f", "role": "주요 버튼" }],
+      "secondary": [{ "hex": "#ff8ab3", "role": "강조 문구" }],
+      "neutral": [{ "hex": "#0d0d0d", "role": "배경" }, { "hex": "#ffffff", "role": "텍스트" }],
+      "note": "검은 바탕 위 색은 사진 타일이 채우고, 주황은 행동 버튼에만 쓴다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://class101.net/ko" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "wise",
+    "name": "Wise",
+    "website_url": "https://wise.com/kr/",
+    "region": "europe",
+    "country": "GB",
+    "industry": "finance",
+    "industry_detail": "해외 송금",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "형광 연두 바탕에 화면을 꽉 채운 초대형 굵은 대문자, 색이 다른 둥근 카드로 송금 서비스를 자신 있게 소개",
+    "analysis": "브랜드 연두를 배경 전체에 깔고 헤드라인을 화면 폭만큼 키워, 금융 서비스인데도 포스터처럼 강하게 말한다. 아래 카드는 색을 하나씩 달리하고 실제 환율·금액 화면을 그대로 보여 줘서, 강한 첫인상 뒤에 바로 구체적인 신뢰를 붙인다.",
+    "preview_image": "assets/previews/wise.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["bold", "friendly"],
+    "mood": ["자신감", "명쾌함", "경쾌함"],
+    "tags": ["형광 연두", "초대형 대문자", "색이 다른 카드", "실제 금액 화면"],
+    "colors": {
+      "primary": [{ "hex": "#9fe870", "role": "브랜드 연두 (배경·보조 버튼)" }],
+      "secondary": [{ "hex": "#163300", "role": "짙은 초록 (헤드라인·주요 버튼)" }, { "hex": "#a0e1e1", "role": "카드 바탕" }, { "hex": "#ffc5e6", "role": "카드 바탕" }],
+      "neutral": [{ "hex": "#ffffff", "role": "카드 안 화면" }, { "hex": "#1f1f1f", "role": "어두운 카드" }],
+      "note": "연두와 짙은 초록 한 쌍이 기본이고, 카드마다 하늘·분홍·검정을 하나씩 바꿔 리듬을 만든다."
+    },
+    "typography": {
+      "family": "Wise Sans (헤드라인) · Inter (본문)",
+      "category": "custom",
+      "heading": "아주 굵고 압축된 대문자, 줄 간격을 바짝 붙여 한 덩어리로",
+      "body": "중간 크기의 담백한 산세리프",
+      "description": "헤드라인은 그래픽처럼 크게, 본문은 짧고 평이하게 써서 대비를 키운다.",
+      "sample": { "heading": "The international account", "body": "낮은 수수료로 빠르게 보내세요.", "weight": 900, "upper": true, "tracking": "-0.02em" }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "contained",
+      "alignment": "center",
+      "whitespace": "balanced",
+      "density": "comfortable",
+      "grid": "가운데 정렬 헤드라인과 버튼 둘, 그 아래 3단 카드",
+      "blocks": ["nav", "hero", "grid-3"]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "none",
+      "depth": "flat",
+      "button": { "shape": "pill", "style": "filled", "note": "짙은 초록 알약 주요 버튼, 연한 초록 알약 보조 버튼" },
+      "card": { "note": "카드마다 다른 바탕색과 큰 둥근 모서리, 그림자 없음" },
+      "navigation": { "type": "minimal", "note": "로고·메뉴 셋·오른쪽 가입 버튼만 둔 얇은 바" }
+    },
+    "visual": {
+      "image_style": ["product"],
+      "characteristics": ["앱 화면 조각을 카드 안에 실제처럼 배치", "국기 아이콘으로 통화를 표시"],
+      "graphics": "사진 대신 큰 글자와 색면이 화면을 채운다"
+    },
+    "design_characteristics": [
+      { "title": "브랜드 색을 배경 전체에", "text": "포인트로만 쓰기 쉬운 형광 연두를 첫 화면 배경으로 깔아 바로 알아보게 한다." },
+      { "title": "포스터 같은 헤드라인", "text": "화면 폭을 채우는 굵은 대문자 세 줄로 메시지를 한 번에 전달한다." },
+      { "title": "카드마다 다른 색", "text": "같은 모양의 카드에 바탕색만 바꿔 기능을 구분한다." },
+      { "title": "숫자로 신뢰 주기", "text": "환율·금액 입력 화면을 그대로 보여 줘 서비스가 실제로 어떻게 동작하는지 알린다." }
+    ],
+    "best_for": ["핀테크·송금 서비스", "젊은 층 대상 금융 앱", "강한 브랜드 색이 있는 스타트업"],
+    "things_to_avoid": ["형광 연두 위 긴 문장은 눈이 쉽게 피로해진다", "초대형 영문 대문자의 힘을 한글로 옮기면 무게감이 달라진다", "카드 색을 너무 많이 늘리면 산만해진다"],
+    "sources": [
+      { "type": "official", "label": "공식 사이트", "url": "https://wise.com/kr/" },
+      { "type": "design-system", "label": "Wise Design", "url": "https://wise.design/" }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "kakaobank",
+    "name": "카카오뱅크",
+    "website_url": "https://www.kakaobank.com",
+    "region": "korea",
+    "country": "KR",
+    "industry": "finance",
+    "industry_detail": "인터넷 은행",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "흰 여백 가운데에 일상 영상을 크게 두고 반투명 한글 문구를 얹은, 은행 같지 않은 첫 화면",
+    "preview_image": "assets/previews/kakaobank.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["minimal", "editorial"],
+    "mood": ["일상적", "따뜻함"],
+    "tags": ["영상 히어로", "반투명 헤드라인", "흰 여백", "가운데 정렬"],
+    "colors": {
+      "neutral": [{ "hex": "#ffffff", "role": "배경·헤드라인" }, { "hex": "#1a1a1a", "role": "로고·메뉴" }],
+      "note": "브랜드 노랑 대신 영상의 따뜻한 일상 톤을 앞세운다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.kakaobank.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "mercury",
+    "name": "Mercury",
+    "website_url": "https://mercury.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "finance",
+    "industry_detail": "비즈니스 뱅킹",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "안개 낀 산 위 책상 사진을 화면 가득 깔고 가는 흰 헤드라인과 이메일 입력창만 둔, 차분한 비즈니스 뱅킹",
+    "preview_image": "assets/previews/mercury.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "minimal"],
+    "mood": ["차분함", "여유"],
+    "tags": ["풀스크린 사진", "유리 같은 입력창", "보라 버튼", "가는 헤드라인"],
+    "colors": {
+      "primary": [{ "hex": "#5266eb", "role": "가입 버튼" }],
+      "neutral": [{ "hex": "#ffffff", "role": "헤드라인·메뉴" }, { "hex": "#f4f3ef", "role": "상단 띠" }],
+      "note": "사진의 안개 낀 색감 위에 보라 버튼 하나만 강조한다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://mercury.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "theverge",
+    "name": "The Verge",
+    "website_url": "https://www.theverge.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "media",
+    "industry_detail": "테크 뉴스",
+    "theme": "dark",
+    "color_tone": "multi",
+    "description": "검은 바탕에 세로로 누운 거대 로고와 압축 헤드라인, 민트 포인트로 테크 뉴스를 잡지처럼 편집",
+    "preview_image": "assets/previews/theverge.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "bold"],
+    "mood": ["대담함", "실험적"],
+    "tags": ["세로 로고", "압축 헤드라인", "민트 포인트", "2단 피드"],
+    "colors": {
+      "primary": [{ "hex": "#3cffd0", "role": "구독·탭 강조" }],
+      "neutral": [{ "hex": "#131313", "role": "배경" }, { "hex": "#ffffff", "role": "텍스트" }],
+      "note": "검은 바탕에 민트 하나를 형광처럼 쓴다."
+    },
+    "typography": { "category": "display", "description": "아주 좁고 굵은 헤드라인과 세리프 본문을 섞어 잡지 같은 대비를 만든다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.theverge.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "monocle",
+    "name": "Monocle",
+    "website_url": "https://monocle.com",
+    "region": "europe",
+    "country": "GB",
+    "industry": "media",
+    "industry_detail": "매거진",
+    "theme": "light",
+    "color_tone": "warm",
+    "description": "가운데 큰 세리프 로고와 가는 선으로 나눈 다단 기사, 노란 구독 버튼으로 인쇄 신문을 그대로 옮긴 편집 디자인",
+    "analysis": "신문 1면처럼 큰 마스트헤드 아래 기사를 가는 세로줄로 나눠 촘촘하게 배치한다. 색은 노랑 하나만 써서 구독·라디오처럼 행동이 필요한 곳에만 시선을 모으고, 나머지는 흑백 세리프 글자가 맡는다.",
+    "preview_image": "assets/previews/monocle.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "luxury"],
+    "mood": ["지적임", "단정함", "클래식"],
+    "tags": ["신문식 다단", "큰 세리프 로고", "노란 포인트", "펜 선 일러스트"],
+    "colors": {
+      "primary": [{ "hex": "#ffd100", "role": "구독 버튼·광고 바탕·라디오 강조" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#000000", "role": "텍스트·구분선" }, { "hex": "#2b2b2b", "role": "라디오 패널" }],
+      "note": "흑백 지면에 노랑 하나만 쓴다. 노랑이 보이는 곳이 곧 누를 곳이다."
+    },
+    "typography": {
+      "category": "serif",
+      "heading": "큰 세리프 마스트헤드, 기사 제목은 중간 크기 세리프",
+      "body": "세리프 본문, 분류 이름은 작은 대문자",
+      "description": "세리프 하나로 로고·제목·본문을 모두 쓰고, 크기와 대문자 여부로만 위계를 나눈다.",
+      "sample": { "heading": "Affairs, culture and design", "body": "Currently being edited in London", "weight": 400 }
+    },
+    "layout": {
+      "type": "editorial",
+      "content_width": "contained",
+      "alignment": "mixed",
+      "whitespace": "tight",
+      "density": "compact",
+      "grid": "가는 세로줄로 나눈 3단: 큰 기사 · 작은 기사 · 라디오 패널",
+      "blocks": ["nav", "text", "grid-3"]
+    },
+    "ui_style": {
+      "radius": "slight",
+      "shadow": "none",
+      "depth": "flat",
+      "button": { "shape": "sharp", "style": "filled", "note": "노란 바탕의 작은 대문자 버튼" },
+      "navigation": { "type": "dense", "note": "로고 위아래로 나눈 두 줄 메뉴, 섹션 이름은 세로줄로 구분" }
+    },
+    "visual": {
+      "image_style": ["photography", "illustration"],
+      "characteristics": ["기사 사진은 사각형 그대로", "로고 양옆의 펜 선 일러스트"],
+      "icon_style": "펜으로 그린 듯한 선 일러스트 아이콘",
+      "graphics": "가는 가로·세로 선으로 지면을 나눈다"
+    },
+    "design_characteristics": [
+      { "title": "신문 1면 같은 마스트헤드", "text": "화면 가운데 큰 세리프 로고를 두고 양옆에 작은 문구와 일러스트를 붙인다." },
+      { "title": "가는 선으로 나눈 단", "text": "상자나 그림자 대신 얇은 선으로 기사 영역을 구분한다." },
+      { "title": "노랑 하나로 행동 유도", "text": "구독·라디오 등 눌러야 할 곳에만 노랑을 쓴다." },
+      { "title": "기사마다 분류와 읽는 시간", "text": "작은 대문자 분류와 '3 MIN READ' 같은 정보로 훑어보기 쉽게 한다." }
+    ],
+    "best_for": ["매거진·뉴스 사이트", "브랜드 저널·블로그", "글 콘텐츠가 많은 문화 브랜드"],
+    "things_to_avoid": ["정보가 촘촘해 모바일에서 단 구성이 쉽게 무너진다", "작은 세리프 본문은 화면에 따라 흐릿해 보일 수 있다"],
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://monocle.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "brunch",
+    "name": "브런치",
+    "website_url": "https://brunch.co.kr",
+    "region": "korea",
+    "country": "KR",
+    "industry": "media",
+    "industry_detail": "글쓰기 플랫폼",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "흰 바탕에 가는 명조 문장과 회색으로 흐려지는 소개글, 3칸 카드 슬라이드로 글 플랫폼의 문학적 분위기를 표현",
+    "preview_image": "assets/previews/brunch.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["editorial", "minimal"],
+    "mood": ["서정적", "고요함"],
+    "tags": ["명조 문장", "흐려지는 회색 글", "카드 슬라이드", "넓은 여백"],
+    "colors": {
+      "primary": [{ "hex": "#00c3bd", "role": "공지 링크" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#333333", "role": "제목" }, { "hex": "#bbbbbb", "role": "흐린 소개글" }],
+      "note": "흑백과 회색 단계가 중심이고, 민트는 작은 링크에만 쓴다."
+    },
+    "typography": { "category": "serif", "description": "명조 계열 제목과 회색 농도를 달리한 문장으로 책 같은 분위기를 만든다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://brunch.co.kr" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "ana",
+    "name": "ANA",
+    "website_url": "https://www.ana.co.jp/ko/kr/",
+    "region": "japan",
+    "country": "JP",
+    "industry": "travel",
+    "industry_detail": "항공사",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "공지 띠와 넓은 사진 슬라이드, 그 아래 둥근 예약 카드를 겹쳐 둔 정보 중심 항공사 홈",
+    "preview_image": "assets/previews/ana.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["friendly", "technical"],
+    "mood": ["신뢰", "정돈됨"],
+    "tags": ["예약 위젯", "사진 슬라이드", "알약 탭", "아이콘 바로가기"],
+    "colors": {
+      "primary": [{ "hex": "#13448f", "role": "로고·주요 버튼" }],
+      "neutral": [{ "hex": "#ffffff", "role": "카드 바탕" }, { "hex": "#f5f5f5", "role": "배경" }, { "hex": "#d6dce9", "role": "공지 띠" }],
+      "note": "남색 하나로 브랜드와 버튼을 통일하고 나머지는 연회색으로 정돈한다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.ana.co.jp/ko/kr/" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "belmond",
+    "name": "Belmond",
+    "website_url": "https://www.belmond.com",
+    "region": "europe",
+    "country": "GB",
+    "industry": "travel",
+    "industry_detail": "럭셔리 호텔·열차",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "베네치아 실내 영상을 꽉 채우고 자간을 넓힌 로고만 가운데 둔 영화 같은 첫 화면",
+    "preview_image": "assets/previews/belmond.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["luxury", "editorial", "minimal"],
+    "mood": ["고급스러움", "낭만"],
+    "tags": ["풀스크린 영상", "자간 넓은 로고", "얇은 상단 바", "알약 선택 버튼"],
+    "colors": {
+      "neutral": [{ "hex": "#ffffff", "role": "로고·버튼" }, { "hex": "#f4f1ea", "role": "상단 바" }, { "hex": "#1c1c1c", "role": "텍스트" }],
+      "note": "UI는 무채색으로 비우고 영상의 실내 조명 색을 그대로 살린다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.belmond.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "toyota",
+    "name": "Toyota",
+    "website_url": "https://toyota.jp",
+    "region": "japan",
+    "country": "JP",
+    "industry": "mobility",
+    "industry_detail": "자동차",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "흰 바탕 가운데 상자 안에 차 사진 슬라이드와 공지 목록을 차곡차곡 쌓은 단정한 정보형 구성",
+    "preview_image": "assets/previews/toyota.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["minimal", "technical"],
+    "mood": ["단정함", "신뢰"],
+    "tags": ["가운데 정렬 상자", "사진 슬라이드", "공지 목록", "작은 메뉴"],
+    "colors": {
+      "primary": [{ "hex": "#eb0a1e", "role": "슬라이드 표시점" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#f5f5f5", "role": "공지 영역" }, { "hex": "#000000", "role": "텍스트" }],
+      "note": "흑백 바탕에 빨강은 아주 작은 표시에만 쓴다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://toyota.jp" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "volvo",
+    "name": "Volvo Cars",
+    "website_url": "https://www.volvocars.com/kr/",
+    "region": "europe",
+    "country": "SE",
+    "industry": "mobility",
+    "industry_detail": "자동차",
+    "theme": "light",
+    "color_tone": "grayish",
+    "description": "풀폭 사진 위 왼쪽에 가는 한글 헤드라인과 흰 알약 버튼 하나, 자간 넓힌 로고로 차분한 북유럽 미니멀",
+    "preview_image": "assets/previews/volvo.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["minimal", "friendly"],
+    "mood": ["차분함", "안정감"],
+    "tags": ["풀폭 사진", "가는 헤드라인", "자간 넓은 로고", "흰 알약 버튼"],
+    "colors": {
+      "primary": [{ "hex": "#141414", "role": "상단 띠·텍스트" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경·버튼" }, { "hex": "#f0f0f0", "role": "바로가기 카드" }],
+      "note": "흑백 UI에 사진의 벽돌·회색 톤을 그대로 둔다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.volvocars.com/kr/" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "kia",
+    "name": "Kia",
+    "website_url": "https://www.kia.com/kr",
+    "region": "korea",
+    "country": "KR",
+    "industry": "mobility",
+    "industry_detail": "자동차",
+    "theme": "dark",
+    "color_tone": "cool",
+    "description": "차 사진을 화면 가득 채우고 왼쪽 아래에 굵은 영문 헤드라인과 각진 버튼 둘을 둔 강한 광고형 첫 화면",
+    "preview_image": "assets/previews/kia.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["bold", "technical"],
+    "mood": ["역동적", "도시적"],
+    "tags": ["풀스크린 사진", "각진 버튼", "굵은 영문 헤드라인", "투명 내비게이션"],
+    "colors": {
+      "primary": [{ "hex": "#05141f", "role": "보조 버튼 (미드나잇 블랙)" }],
+      "neutral": [{ "hex": "#ffffff", "role": "로고·주요 버튼·텍스트" }],
+      "note": "흰색과 아주 짙은 남색만 쓰고, 화면의 분위기는 사진이 만든다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.kia.com/kr" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "vercel",
+    "name": "Vercel",
+    "website_url": "https://vercel.com",
+    "region": "usa",
+    "country": "US",
+    "industry": "technology",
+    "industry_detail": "개발 플랫폼",
+    "theme": "dark",
+    "color_tone": "grayish",
+    "description": "검은 화면 가운데 빛나는 삼각형 로고, 흰 헤드라인과 작은 버튼만 둔 개발자용 미니멀",
+    "analysis": "로고 하나를 빛나는 오브젝트로 만들어 히어로 이미지로 쓰고, 나머지는 흑백과 회색 단계로만 정리한다. 화면을 왼쪽 문장·가운데 로고·오른쪽 목록으로 나눠 비어 보이지 않으면서도 여백이 넉넉하다.",
+    "preview_image": "assets/previews/vercel.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["technical", "minimal", "modern"],
+    "mood": ["정밀함", "차분함", "미래적"],
+    "tags": ["빛나는 로고", "흑백", "고객사 로고 줄", "3분할 히어로"],
+    "colors": {
+      "primary": [{ "hex": "#000000", "role": "배경" }],
+      "neutral": [{ "hex": "#ffffff", "role": "헤드라인·주요 버튼" }, { "hex": "#a1a1a1", "role": "보조 텍스트" }, { "hex": "#1f1f1f", "role": "테두리·보조 버튼" }],
+      "note": "유채색이 없다. 흰색과 몇 단계의 회색으로만 위계를 만든다."
+    },
+    "typography": {
+      "family": "Geist",
+      "category": "sans",
+      "heading": "중간 굵기의 큰 헤드라인, 자간을 좁혀 단단하게",
+      "body": "작은 회색 설명 글",
+      "description": "기하학적인 산세리프를 굵기 차이보다 크기와 회색 농도로 구분한다.",
+      "sample": { "heading": "Agentic Infrastructure", "body": "For coding agents", "weight": 500, "tracking": "-0.04em" }
+    },
+    "layout": {
+      "type": "full-width",
+      "content_width": "contained",
+      "alignment": "mixed",
+      "whitespace": "generous",
+      "density": "spacious",
+      "grid": "왼쪽 헤드라인 · 가운데 로고 · 오른쪽 짧은 목록의 3분할, 아래 고객사 로고 한 줄",
+      "blocks": ["nav", "hero", "row-scroll"]
+    },
+    "ui_style": {
+      "radius": "round",
+      "shadow": "none",
+      "depth": "flat",
+      "button": { "shape": "pill", "style": "filled", "note": "흰 알약 주요 버튼과 테두리만 있는 보조 버튼을 짝지운다" },
+      "navigation": { "type": "minimal", "note": "로고·메뉴 넷·오른쪽 작은 버튼 셋만 둔 얇은 바" }
+    },
+    "visual": {
+      "image_style": ["3d"],
+      "characteristics": ["로고 뒤로 번지는 빛", "검은 면 위 고객사 로고"],
+      "graphics": "로고 자체를 빛나는 오브젝트로 쓴다"
+    },
+    "design_characteristics": [
+      { "title": "로고가 곧 히어로 이미지", "text": "사진 대신 삼각형 로고에 빛을 넣어 화면 가운데 상징으로 둔다." },
+      { "title": "흑백과 회색 단계", "text": "색을 쓰지 않고 흰색·회색 농도로 중요도를 나눈다." },
+      { "title": "세 덩어리로 나눈 첫 화면", "text": "문장·로고·목록을 좌우로 펼쳐 넓은 여백 속에서도 정보가 한눈에 들어온다." },
+      { "title": "고객사 로고로 신뢰", "text": "첫 화면 아래에 유명 고객사 로고를 한 줄로 보여 준다." }
+    ],
+    "best_for": ["개발자 도구·인프라 SaaS", "AI 서비스 랜딩 페이지", "기술 스타트업"],
+    "things_to_avoid": ["흑백만 쓰면 브랜드 상징이 약할 때 평범해 보인다", "검은 바탕 위 작은 회색 글씨는 읽기 어려울 수 있다"],
+    "sources": [
+      { "type": "official", "label": "공식 사이트", "url": "https://vercel.com" },
+      { "type": "design-system", "label": "Geist Design System", "url": "https://vercel.com/geist" }
+    ],
+    "review_status": "draft"
+  },
+  {
+    "slug": "raycast",
+    "name": "Raycast",
+    "website_url": "https://www.raycast.com",
+    "region": "europe",
+    "country": "GB",
+    "industry": "technology",
+    "industry_detail": "생산성 앱",
+    "theme": "dark",
+    "color_tone": "warm",
+    "description": "검은 바탕에 붉은 빛줄기 그래픽을 비스듬히 흘리고 굵은 흰 문장을 가운데 둔, 날렵한 키보드 런처 앱",
+    "preview_image": "assets/previews/raycast.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["technical", "bold", "modern"],
+    "mood": ["날렵함", "강렬함"],
+    "tags": ["빛줄기 그래픽", "떠 있는 둥근 내비게이션", "가운데 정렬", "고정폭 글씨"],
+    "colors": {
+      "primary": [{ "hex": "#ff6363", "role": "브랜드 빨강 (그래픽·로고)" }],
+      "neutral": [{ "hex": "#0a0a0a", "role": "배경" }, { "hex": "#ffffff", "role": "헤드라인·버튼" }],
+      "note": "검은 바탕에 빨강을 빛처럼 번지게 써서 속도감을 낸다."
+    },
+    "typography": { "category": "sans", "description": "굵은 산세리프 헤드라인과, 설치 안내에 쓴 작은 고정폭 글씨를 섞는다." },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.raycast.com" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "smarthr",
+    "name": "SmartHR",
+    "website_url": "https://smarthr.jp",
+    "region": "japan",
+    "country": "JP",
+    "industry": "technology",
+    "industry_detail": "HR 클라우드",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "청록 배경에 정장 인물 사진과 굵은 일본어 헤드라인, 말풍선 달린 둥근 버튼으로 B2B 서비스를 친근하게 소개",
+    "preview_image": "assets/previews/smarthr.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["friendly", "bold"],
+    "mood": ["친근함", "신뢰"],
+    "tags": ["청록 띠", "인물 사진", "말풍선 라벨", "실적 배지"],
+    "colors": {
+      "primary": [{ "hex": "#00c4cc", "role": "로고·히어로 배경" }],
+      "secondary": [{ "hex": "#ffe14a", "role": "말풍선 라벨" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경·헤드라인" }, { "hex": "#23221f", "role": "텍스트" }],
+      "note": "청록 하나를 넓게 쓰고, 노랑은 버튼 위 작은 말풍선에만 쓴다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://smarthr.jp" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "pokemon",
+    "name": "Pokémon",
+    "website_url": "https://www.pokemon.co.jp",
+    "region": "japan",
+    "country": "JP",
+    "industry": "entertainment",
+    "industry_detail": "게임/캐릭터",
+    "theme": "light",
+    "color_tone": "multi",
+    "description": "카드 이미지와 금색 배지, 화려한 그라데이션 배너를 화면 가득 채운 축제 같은 캐릭터 브랜드 홈",
+    "preview_image": "assets/previews/pokemon.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["playful", "bold"],
+    "mood": ["신남", "화려함"],
+    "tags": ["대형 배너 슬라이드", "금색 배지", "캐릭터", "굵은 일본어 타이포"],
+    "colors": {
+      "primary": [{ "hex": "#ffcb05", "role": "로고·배지" }],
+      "secondary": [{ "hex": "#2a75bb", "role": "로고 테두리·버튼" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }],
+      "note": "로고의 노랑·파랑에 배너마다 다른 화려한 색이 더해진다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://www.pokemon.co.jp" }],
+    "review_status": "draft"
+  },
+  {
+    "slug": "ohouse",
+    "name": "오늘의집",
+    "website_url": "https://ohou.se",
+    "region": "korea",
+    "country": "KR",
+    "industry": "commerce",
+    "industry_detail": "인테리어 플랫폼",
+    "theme": "light",
+    "color_tone": "cool",
+    "description": "하늘색 포인트와 집 사진 카드, 둥근 아이콘 바로가기로 콘텐츠와 쇼핑을 한 화면에 엮은 플랫폼",
+    "preview_image": "assets/previews/ohouse.jpg",
+    "preview_captured_on": "2026-10-15",
+    "design_keywords": ["friendly", "editorial"],
+    "mood": ["산뜻함", "편안함"],
+    "tags": ["집 사진 카드", "아이콘 바로가기", "하늘색 포인트", "탭 메뉴"],
+    "colors": {
+      "primary": [{ "hex": "#35c5f0", "role": "로고·버튼·선택된 탭" }],
+      "neutral": [{ "hex": "#ffffff", "role": "배경" }, { "hex": "#f7f9fa", "role": "아이콘 바탕" }, { "hex": "#2f3438", "role": "텍스트" }],
+      "note": "하늘색 하나를 브랜드 색으로 쓰고, 화면의 색은 집 사진이 채운다."
+    },
+    "sources": [{ "type": "official", "label": "공식 사이트", "url": "https://ohou.se" }],
+    "review_status": "draft"
   }
 ]
 $seed$::jsonb) as r
@@ -2550,5 +3749,5 @@ on conflict (slug) do update set
   sources = excluded.sources,
   review_status = excluded.review_status;
 
--- 확인: 아래 결과에 브랜드 수(30)와 이미지가 있는 브랜드 수가 나오면 성공
+-- 확인: 아래 결과에 브랜드 수(69)와 이미지가 있는 브랜드 수가 나오면 성공
 select count(*) as brands, count(preview_image) as with_preview, count(*) filter (where review_status = 'reviewed') as reviewed from public.brands;

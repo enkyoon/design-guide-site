@@ -21,7 +21,7 @@
 ### 사용자가 "캡처했어 / 반영해줘"라고 하면 — 2단계: 정리
 
 1. `captures/` 폴더의 이미지를 확인한다. 이름이 한글이거나 다르면 slug에 맞춰 짝을 짓는다.
-2. 각 이미지를 16:10 비율로 (위쪽 기준) 잘라 **960×600 JPG**로 줄여 `site/assets/previews/<slug>.jpg`에 저장한다. 브라우저 주소창·스크롤바가 찍혔으면 잘라낸다. 반복 작업이니 `tools/make-previews.ps1`이 없으면 처음에 만들어 쓴다.
+2. 각 이미지를 16:10 비율로 (위쪽 기준) 잘라 **960×600 JPG**로 줄여 `site/assets/previews/<slug>.jpg`에 저장한다. 브라우저 주소창·스크롤바가 찍혔으면 잘라낸다. `tools/make-previews.ps1 -Items "slug=원본파일=가로위치=위쪽여백"`를 쓴다. 가로위치는 로고·제목이 왼쪽이면 0, 가운데면 0.5. 위쪽여백은 맨 위 광고 띠를 건너뛸 픽셀 수(생략 가능). 팝업이 화면을 덮은 캡처는 쓰지 말고 다시 찍어 달라고 한다. 결과를 한 장으로 모아 보고 잘린 곳이 있으면 위치를 바꿔 다시 만든다. 사용자 캡처는 대개 `스크린샷 날짜 시간.png` 이름이라 이미지를 보고 짝짓는다.
 3. **캡처 이미지를 직접 보고** 기본 데이터를 작성한다. 이름이나 다른 AI 목록의 태그를 그대로 믿지 않는다.
    - 기본으로 채울 것: slug, name, website_url, region, country, industry, industry_detail, theme, color_tone, description, design_keywords(2~3개, DATA_GUIDE 기준), mood, tags, colors, preview_image, preview_captured_on(캡처한 날), review_status `draft`
    - 확실하지 않은 항목은 비워 둔다.
@@ -40,16 +40,16 @@
 
 ### 후보 풀 (예비 명단, 쓰면 지운다)
 
-- 푸드: Starbucks, Blue Bottle Coffee, %Arabica, Oatly, Shake Shack, Sweetgreen, McDonald's, Chipotle, 파리바게뜨, 프릳츠, 노티드, Doutor Coffee
-- 여행: Aman, HOSHINOYA, Hyatt, Marriott, Belmond, 대한항공, ANA, Japan Airlines
-- 모빌리티: Tesla, Rivian, Polestar, Porsche, Genesis, 현대자동차, Kia, Volvo Cars, Mercedes-Benz, Lucid, Toyota
-- 금융: Revolut, Monzo, Wise, Klarna, Mercury, Ramp, 카카오뱅크, 현대카드, Robinhood
-- 패션·뷰티: adidas, New Balance, Patagonia, COS, Acne Studios, Jacquemus, Gentle Monster, TAMBURINS, Aesop, Glossier, 설화수, Hermès, Dior, Prada, Loewe
-- 커머스·리빙: 29CM, 오늘의집, 컬리, HAY, Vitra, Vitsœ, Teenage Engineering, Dyson, Bang & Olufsen, BALMUDA, Herman Miller, LEGO
-- 테크: Vercel, Framer, Webflow, Raycast, Anthropic, OpenAI, Samsung, NVIDIA, Nothing
-- 미디어: The Verge, The New York Times, Bloomberg, Monocle, Kinfolk, Medium, Pinterest, 브런치
+- 푸드: Starbucks, Shake Shack, Sweetgreen, McDonald's, Chipotle, 파리바게뜨, 노티드, Doutor Coffee
+- 여행: Hyatt, Marriott, Japan Airlines
+- 모빌리티: Tesla, Rivian, 현대자동차, Mercedes-Benz, Lucid
+- 금융: Monzo, Klarna, Ramp, Robinhood
+- 패션·뷰티: adidas, New Balance, Patagonia, COS, Acne Studios, Jacquemus, TAMBURINS, Glossier, 설화수, Hermès, Dior, Prada, Loewe
+- 커머스·리빙: 컬리, HAY, Vitra, Vitsœ, Dyson, Bang & Olufsen, Herman Miller, LEGO
+- 테크: Framer, Webflow, Anthropic, OpenAI, Samsung, NVIDIA
+- 미디어: The New York Times, Bloomberg, Medium, Pinterest
 - 엔터: Disney+, Xbox, A24, HYBE, Epic Games
-- 교육·헬스케어 (현재 0개): Duolingo, MasterClass, Headspace, Calm, Oura, Khan Academy
+- 교육·헬스케어: Calm, Khan Academy (일본·한국 쪽 후보 보충 필요)
 
 ### `MD/BRAND_ROADMAP.md` 형식
 
@@ -75,5 +75,5 @@
 
 ### 처음 2차를 시작할 때 할 일
 
-- 프로젝트 맨 위에 있는 `샤넬.png`, `유니클로.png`, `루이비통.png`는 사용자가 직접 찍은 캡처다. `captures/`로 옮긴 뒤 chanel / uniqlo / louisvuitton 이미지로 처리한다. 이 3곳은 데이터가 이미 있으므로 preview_image만 추가한다.
+- `captures/chanel.png`, `uniqlo.png`, `louisvuitton.png`는 사용자가 직접 찍은 캡처다(2차 명단 때 옮겨 둠). 2차 정리 때 함께 처리한다. 이 3곳은 데이터가 이미 있으므로 preview_image만 추가한다.
 - Nike 이미지는 json에 반영됐지만, DB 반영(seed.sql 실행)은 사용자가 했는지 확인한다.
