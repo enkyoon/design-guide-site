@@ -15,8 +15,9 @@
 1. `data/brands.json`에서 지금 분포(업종·지역·테마·design_keywords 개수)를 센다.
 2. 가장 비어 있는 필터부터 채우도록 20개를 고른다. 아래 '고르는 기준'과 '후보 풀'을 쓴다. 이미 있는 slug와 겹치지 않게 한다.
 3. 각 사이트의 공식 주소가 지금 열리는지(폐쇄·로그인 전용 아닌지) 확인한다.
-4. `MD/BRAND_ROADMAP.md`에 새 차수를 추가하고, 사용자에게 캡처 안내(주소 + 저장할 파일 이름)를 준다.
-5. 여기서 멈추고 사용자의 캡처를 기다린다.
+4. `MD/BRAND_ROADMAP.md`에 새 차수를 추가한다.
+5. **자동 캡처부터 시도한다:** `tools/auto-capture.ps1 -Url <주소> -Out captures/auto/<slug>.png -Port <겹치지 않는 번호>`로 20곳을 찍고(밝은 모드로 연다), 한 장에 모아 직접 본다. 막힘(403·빈 화면·점검 안내)이나 팝업이 덮은 곳만 골라낸다. 자동 접속을 막는 사이트를 우회하려고 하지 않는다.
+6. 쓸 수 있는 캡처는 바로 2단계(정리)로 넘기고, 남은 곳만 사용자에게 직접 캡처를 부탁한다(주소 + 이유). 사용자 캡처를 기다린다.
 
 ### 사용자가 "캡처했어 / 반영해줘"라고 하면 — 2단계: 정리
 
@@ -40,16 +41,16 @@
 
 ### 후보 풀 (예비 명단, 쓰면 지운다)
 
-- 푸드: Starbucks, Shake Shack, Sweetgreen, McDonald's, Chipotle, 파리바게뜨, 노티드, Doutor Coffee
-- 여행: Hyatt, Marriott, Japan Airlines
-- 모빌리티: Tesla, Rivian, 현대자동차, Mercedes-Benz, Lucid
-- 금융: Monzo, Klarna, Ramp, Robinhood
-- 패션·뷰티: adidas, New Balance, Patagonia, COS, Acne Studios, Jacquemus, TAMBURINS, Glossier, 설화수, Hermès, Dior, Prada, Loewe
-- 커머스·리빙: 컬리, HAY, Vitra, Vitsœ, Dyson, Bang & Olufsen, Herman Miller, LEGO
-- 테크: Framer, Webflow, Anthropic, OpenAI, Samsung, NVIDIA
-- 미디어: The New York Times, Bloomberg, Medium, Pinterest
-- 엔터: Disney+, Xbox, A24, HYBE, Epic Games
-- 교육·헬스케어: Calm, Khan Academy (일본·한국 쪽 후보 보충 필요)
+- 푸드: Starbucks, Sweetgreen, McDonald's, Chipotle, Doutor Coffee
+- 여행: Marriott
+- 모빌리티: Tesla, Rivian
+- 금융: Monzo, Ramp, Robinhood
+- 패션·뷰티: adidas, New Balance, Patagonia, COS, Glossier, Hermès, Dior, Prada
+- 커머스·리빙: HAY, Vitra, Vitsœ, Herman Miller
+- 테크: Webflow, Anthropic, OpenAI
+- 미디어: Bloomberg, Medium, Pinterest
+- 엔터: Disney+, Xbox, Epic Games
+- 교육·헬스케어: (후보 보충 필요 — 특히 한국·일본)
 
 ### `MD/BRAND_ROADMAP.md` 형식
 
